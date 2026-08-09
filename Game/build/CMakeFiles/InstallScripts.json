@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/source/MageaWhole/Game/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

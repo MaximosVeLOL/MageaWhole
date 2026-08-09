@@ -1,0 +1,13 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/source/MageaWhole/build/cmake_install.cmake",
+		"C:/source/MageaWhole/build/core/cmake_install.cmake",
+		"C:/source/MageaWhole/build/MGUI/cmake_install.cmake",
+		"C:/source/MageaWhole/build/Magea/cmake_install.cmake",
+		"C:/source/MageaWhole/build/Magea/vendored/SDL/cmake_install.cmake",
+		"C:/source/MageaWhole/build/Magea/vendored/SDL_mixer/cmake_install.cmake",
+		"C:/source/MageaWhole/build/Game/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

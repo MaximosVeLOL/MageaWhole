@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="MageaGameTest.vcxproj" Id="92ec4b2e-0712-450d-bb8b-6b70688d2b86" />
+</Solution>

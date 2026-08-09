@@ -1,0 +1,23 @@
+bind {
+
+up (Up, dpup)
+down (Down, dpdown)
+left (Left, dpleft)
+right (Right, dpright)
+jump (Space, a)
+
+dev_editor_up (W)
+dev_editor_down (S)
+dev_editor_left (A)
+dev_editor_right (D)
+dev_editor_import (I)
+dev_editor_export (E)
+
+dev_tools_toggle (T)
+
+}
+
+axis {
+hortizontal (right, left)
+vertical (down, up)
+}

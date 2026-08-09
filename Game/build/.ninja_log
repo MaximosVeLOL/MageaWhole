@@ -1,0 +1,6 @@
+# ninja log v7
+36	103	8079496656683982	CMakeFiles/Game.dir/source/engine/api.cpp.obj	ff485b9fa228ab99
+22	102	8079501778144026	CMakeFiles/Game.dir/source/game.cpp.obj	1c6aa66a7eab1f8
+17	161	8079501778104091	CMakeFiles/Game.dir/source/objectDefs.cpp.obj	55421ea87b5732c0
+161	258	8079501780415960	libGame.dll	47da20ceb6367532
+161	258	8079501780415960	libGame.dll.a	47da20ceb6367532

@@ -1,0 +1,6 @@
+﻿C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(537,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  pch.cpp
+  dllmain.cpp
+  LINK : C:\source\MageaGame\assets\dlls\game.dll\MageaGameTest.dll not found or not built by the last incremental link; performing full link
+     Creating library C:\source\MageaGame\assets\dlls\game.dll\MageaGameTest.lib and object C:\source\MageaGame\assets\dlls\game.dll\MageaGameTest.exp
+  MageaGameTest.vcxproj -> C:\source\MageaGame\assets\dlls\game.dll\MageaGameTest.dll
