@@ -7,8 +7,11 @@ namespace MGUI {
 	
 	constexpr u8 MAX_WIDGETS = 50;
 
-	void Screen::AddWidget(Widget* pWidget, const char* pName) {
-		if (mWidgetCount + 1 >= MAX_WIDGETS) return;
+	u8 Screen::AddWidget(Widget* pWidget, const char* pName, u8 pWidgetParentID) {
+		if (mWidgetCount + 1 >= MAX_WIDGETS) {
+			Log("(Screen::AddWidget) We have exceeded the widget limit! returning PARENT_NONE");
+			return PARENT_NONE;
+		}
 		pWidget->mParent = this;
 		pWidget->mID = mWidgetCount;
 		if (pName) {
@@ -19,8 +22,11 @@ namespace MGUI {
 		else {
 			mWidgetNames[mWidgetCount] = format("Unset(%d)", mWidgetCount);
 		}
+		if (pWidgetParentID != PARENT_NONE) {
+			pWidget->mWidgetParent = pWidgetParentID;
+		}
 		mWidgets[mWidgetCount++] = pWidget;
-		
+		return mWidgetCount - 1;
 	}
 
 	Widget* Screen::FindWidget(const char* pName) {
@@ -37,6 +43,10 @@ namespace MGUI {
 		static u8 prevMouseState = 0;
 		mMouseOverWidget = false;
 		for (u8 i = 0; i < mWidgetCount;i++) {
+			if (mWidgets[i]->mWidgetParent != PARENT_NONE) {
+				mWidgets[i]->mRect.x += mWidgets[mWidgets[i]->mWidgetParent]->mRect.x;
+				mWidgets[i]->mRect.y += mWidgets[mWidgets[i]->mWidgetParent]->mRect.y;
+			}
 			mWidgets[i]->Tick();
 			if (Input::gMouseState.x >= mWidgets[i]->mRect.x && Input::gMouseState.x <= mWidgets[i]->mRect.x + mWidgets[i]->mRect.width
 				&& Input::gMouseState.y >= mWidgets[i]->mRect.y && Input::gMouseState.y <= mWidgets[i]->mRect.y + mWidgets[i]->mRect.height) {
@@ -76,6 +86,10 @@ namespace MGUI {
 			mHoverStates[i].prev = mHoverStates[i].cur;
 
 			mWidgets[i]->Render();
+			if (mWidgets[i]->mWidgetParent != PARENT_NONE) {
+				mWidgets[i]->mRect.x -= mWidgets[mWidgets[i]->mWidgetParent]->mRect.x;
+				mWidgets[i]->mRect.y -= mWidgets[mWidgets[i]->mWidgetParent]->mRect.y;
+			}
 		}
 		prevMouseState = Input::gMouseState.state;
 	}

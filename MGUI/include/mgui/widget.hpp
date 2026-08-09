@@ -1,7 +1,7 @@
 #ifndef __MGUI_WIDGET_H__
 #define __MGUI_WIDGET_H__
 
-#include "common.hpp"
+#include <mgui/common.hpp>
 
 namespace MGUI {
 
@@ -11,8 +11,9 @@ namespace MGUI {
 	class Widget {
 	private:
 		Screen* mParent = nullptr;
-		u8 mID = 0;
+		u8 mID = 0; //Our index in the screen, IDK why we need this
 	public:
+		u8 mWidgetParent = PARENT_NONE; //The parent of the widget we are attached to.
 
 		bool uGetMouseHoverBefore();
 		bool uGetMouseHoverCurrent();

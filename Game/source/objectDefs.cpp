@@ -1,5 +1,7 @@
 #include <engine/object.hpp>
 #include <engine/api.hpp>
+#include <engine/sprite.hpp>
+
 
 #include <player.hpp>
 #include <enemy.hpp>
@@ -21,6 +23,8 @@ void oPlayer::OnTick() {
 	mVisual.UpdateSprite();
 }
 void oPlayer::CleanUp() {
+	Render::Util::Texture_Unload(mVisual.);
+	
 }
 DEFINE_OBJECT(oPlayerExt, oPlayer);
 

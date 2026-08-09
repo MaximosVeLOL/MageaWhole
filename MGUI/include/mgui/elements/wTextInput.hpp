@@ -1,9 +1,9 @@
 #pragma once
 
 
-#include <MGUI/widget.hpp>
+#include <mgui/widget.hpp>
 #include <core/input.hpp>
-#include <MGUI/style.hpp>
+#include <mgui/style.hpp>
 
 namespace MGUI {
 	

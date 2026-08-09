@@ -11,6 +11,9 @@ struct File;
 namespace Input {
 	typedef const char* inputname_t;
 }
+namespace Render {
+	typedef void* texture_t;
+}
 
 namespace Engine {
 	struct API {
@@ -40,6 +43,10 @@ namespace Engine {
 		void(*Audio_StopChannel)(u8, s64);
 		void(*Audio_PlayMusic)(MIX_Audio*, bool);
 		void(*Audio_StopMusic)(s64);
+
+		s32(*Render_Util_Texture_GetWidth)(Render::texture_t*);
+		s32(*Render_Util_Texture_GetHeight)(Render::texture_t*);
+		void(*Render_Util_Texture_Unload)(Render::texture_t*);
 
 	};
 
@@ -77,6 +84,19 @@ namespace Input {
 	}
 	inline bool GetBindingWentUp(const char* pCode) {
 		return Engine::gEngine.Input_GetBindingWentUp(pCode);
+	}
+}
+namespace Render {
+	namespace Util {
+		inline s32 Texture_GetWidth(texture_t* pTexture) {
+			return Engine::gEngine.Render_Util_Texture_GetWidth(pTexture);
+		}
+		inline s32 Texture_GetHeight(texture_t* pTexture) {
+			return Engine::gEngine.Render_Util_Texture_GetHeight(pTexture);
+		}
+		inline void Texture_Unload(texture_t* pTexture) {
+			Engine::gEngine.Render_Util_Texture_Unload(pTexture);
+		}
 	}
 }
 

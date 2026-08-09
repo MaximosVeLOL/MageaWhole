@@ -4,13 +4,13 @@
 //The audio system, handles audio playing and other boring stuff
 #include <core/common.hpp>
 #include <SDL3_mixer/SDL_mixer.h>
-
-namespace Audio {
+#include <core/component.hpp>
+COMPONENT_DEFINE_START(useAudio, Audio)
 	constexpr u8 MAX_SOUNDS = 8;
 
 	extern MIX_Mixer* gMixer;
 
-	[[nodiscard]] bool Init();
+	[[nodiscard]] COMPONENT_INCLUDE_INIT;
 
 	//Return the channel index of the sound that is playing.
 	//Returns MAX_CHANNELS if there are no empty channels.
@@ -22,11 +22,9 @@ namespace Audio {
 
 	void StopMusic(Sint64 pFadeOutFrames = 0);
 
-	void Update();
-
-	void Unload();
+	COMPONENT_INCLUDE_UNLOAD;
 
 
-}
+COMPONENT_DEFINE_END
 
 #endif

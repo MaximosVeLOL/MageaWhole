@@ -1,6 +1,8 @@
 #include <core/renderer.hpp>
 #include <core/file.hpp> //For the filesystem, used by the font
 
+
+
 namespace Render {
 
 	constexpr u16 SCREEN_WIDTH = 960;
@@ -19,99 +21,45 @@ namespace Render {
 
 	//336 bytes (for HA)
 	texture_t* gFont = nullptr;
-	/*
-	const char gFontLetters[] = {
-		'A',
-		'B',
-		'C',
-		'D',
-		'E',
-		'F',
-		'G',
-		'H',
-		'I',
-		'J',
-		'K',
-		'L',
-		'M',
-		'N',
-		'O',
-		'P',
-		'Q',
-		'R',
-		'S',
-		'T',
-		'U',
-		'V',
-		'W',
-		'X',
-		'Y',
-		'Z',
-		'!',
-		'?',
-		'.',
-		',',
-		';',
-	};
-	constexpr s8 gFontLetterOffset = 0x41; //ASCII offset for the start of 'A'
-	const char gFontNumbers[] = {
-		'0',
-		'1',
-		'2',
-		'3',
-		'4',
-		'5',
-		'6',
-		'7',
-		'8',
-		'9'
-	};
-	constexpr s8 gFontNumberOffset = 0x30; //ASCII offset for the start of '0'
-	static_assert(sizeof(gFontNumbers) == 10, "There are only 10 digits!!! Please use your head");
-	*/
+
 	//The actual size of the font in the image file
 	constexpr u8 gFontSize = 16;
 	constexpr u8 gFontOutputSize = 10;
 
 	RRect getTexturePartFromAscii(char l) {
-		//if (SDL_isalpha(l))
-		//	l = SDL_toupper(l);
 		return { static_cast<s16>((l - 33) * gFontSize), 0, gFontSize, gFontSize };
-		/*
-		//If are a number
-		if (l > gFontNumberOffset && l < gFontLetterOffset) {
-			return { static_cast<u16>((l - gFontNumberOffset) * gFontSize), gFontSize, gFontSize, gFontSize };
-		}
-		//If we are lowercase
-		if (l > 61 && l < 0x7A) {
-			l = (char)SDL_toupper(l);
-		}
-		return { static_cast<u16>((l - gFontLetterOffset) * gFontSize), 0, gFontSize, gFontSize };
-		*/
 	}
 
-
-	s32 Texture_GetWidth(texture_t* pTexture) {
-		if (sUseHA) {
-			float readWidth = 0;
-			if (!SDL_GetTextureSize(static_cast<SDL_Texture*>(pTexture), &readWidth, NULL)) {
-				return -1;
+	namespace Util {
+		s32 Texture_GetWidth(texture_t* pTexture) {
+			if (sUseHA) {
+				float readWidth = 0;
+				if (!SDL_GetTextureSize(static_cast<SDL_Texture*>(pTexture), &readWidth, NULL)) {
+					return -1;
+				}
+				s32 ret = SDL_lroundf(readWidth);
+				return ret;
 			}
-			s32 ret = SDL_lroundf(readWidth);
-			return ret;
+			return -1;
 		}
-		return -1;
-	}
-	s32 Texture_GetHeight(texture_t* pTexture) {
-		if (sUseHA) {
-			float readHeight = 0;
-			if (!SDL_GetTextureSize(static_cast<SDL_Texture*>(pTexture), NULL, &readHeight)) {
-				return -1;
+		s32 Texture_GetHeight(texture_t* pTexture) {
+			if (sUseHA) {
+				float readHeight = 0;
+				if (!SDL_GetTextureSize(static_cast<SDL_Texture*>(pTexture), NULL, &readHeight)) {
+					return -1;
+				}
+				s32 ret = SDL_lroundf(readHeight);
+				return ret;
 			}
-			s32 ret = SDL_lroundf(readHeight);
-			return ret;
+			return -1;
 		}
-		return -1;
+		void Texture_Unload(texture_t* pTexture) {
+			if (sUseHA) {
+				SDL_DestroyTexture(static_cast<SDL_Texture*>(pTexture));
+				return;
+			}
+			SDL_DestroySurface(static_cast<SDL_Surface*>(pTexture));
+		}
 	}
 
 	SDL_Renderer* GetRender() { return gRenderer; }
@@ -295,5 +243,16 @@ namespace Render {
 			return;
 		}
 		SDL_UpdateWindowSurface(gWindow);
+	}
+
+	void Unload() {
+		if (sUseHA) {
+			SDL_FlushRenderer(gRenderer);
+
+			SDL_DestroyRenderer(gRenderer);
+		}
+		else {
+		}
+		SDL_DestroyWindow(gWindow);
 	}
 }

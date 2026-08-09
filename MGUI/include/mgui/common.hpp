@@ -4,7 +4,9 @@
 #include <core/common.hpp>
 #include <core/renderer.hpp>
 
-//Widget rect
+namespace MGUI {
+	constexpr u8 PARENT_NONE = 255;
+}
 
 
 //A color or a texture!

@@ -1,3 +1,7 @@
 .vs/
 vendored/
 out/
+build/
+emc/
+.MageaGame/
+.oldMageaGameTest/

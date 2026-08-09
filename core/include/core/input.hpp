@@ -3,8 +3,8 @@
 
 #include <SDL3/SDL.h> //For SDL_Scancode
 #include <core/common.hpp> //For common typedefs
-
-namespace Input {
+#include <core/component.hpp>
+COMPONENT_DEFINE_START(useInput, Input)
 	struct InputState {
 		bool current : 4;
 		bool previous : 4;
@@ -43,7 +43,8 @@ namespace Input {
 
 	extern bool gIsShift;
 
-	void Init();
+	COMPONENT_INCLUDE_INIT;
+	COMPONENT_INCLUDE_UNLOAD;
 
 	void UpdateAllInput();
 
@@ -55,7 +56,7 @@ namespace Input {
 	extern bool CheckForKeyboardKeyDown(SDL_Keycode pKeycode);
 
 	
-}
+COMPONENT_DEFINE_END
 
 
 #endif

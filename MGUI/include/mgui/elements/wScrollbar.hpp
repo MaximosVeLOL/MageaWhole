@@ -1,6 +1,6 @@
 #pragma once
 
-#include <MGUI/widget.hpp>
+#include <mgui/widget.hpp>
 #include <core/input.hpp>
 
 namespace MGUI {

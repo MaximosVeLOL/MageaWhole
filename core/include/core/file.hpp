@@ -122,7 +122,7 @@ struct File {
 	}
 
 	s64 Tell() {
-		SDL_TellIO(mStream);
+		return SDL_TellIO(mStream);
 	}
 
 	bool ReachedEndOfFile() {

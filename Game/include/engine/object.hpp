@@ -25,8 +25,10 @@ struct VisualSettings {
 	bool useSprite : 4;
 
 	//A Render::texture_t
-	void* texture = nullptr;
-
+	union {
+		void* texture = nullptr;
+		Sprite* sprite;
+	};
 	void UpdateSprite() {
 		return;
 	}

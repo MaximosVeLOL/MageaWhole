@@ -2,6 +2,8 @@
 #pragma once
 
 #include <mgui/widget.hpp>
+#include <functional>
+
 namespace MGUI {
 	class wButton : public Widget {
 	public:
@@ -20,6 +22,12 @@ namespace MGUI {
 
 		wButton(){}
 		wButton(RRect pPosition, void(*pOnClicked)(), const char* pText) : Widget(pPosition) { OnClicked = pOnClicked;size_t sL = SDL_strlen(pText); dText = new char[sL + 1];SDL_strlcpy(dText, pText, sL + 1); }
+		wButton(RRect pPosition, std::function<void()> pOnClicked, const char* pText) : Widget(pPosition) { 
+			OnClicked = pOnClicked.target<void()>();
+			size_t sL = SDL_strlen(pText); 
+			dText = new char[sL + 1];
+			SDL_strlcpy(dText, pText, sL + 1); 
+		}
 		
 	};
 }

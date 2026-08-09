@@ -22,17 +22,17 @@ namespace Input {
 	Axis* gAxis = nullptr;
 	u8 gAxisCount = 0;
 
-	void Init() {
+	COMPONENT_INCLUDE_INIT {
 		size_t fileSize = 0;
 		u8* file = (u8*)SDL_LoadFile(FileSystem::GetStringAsAsset("_dev/inputs.txt"), &fileSize);
 		if (!file) {
 			//delete file;
 			Log("Failed to load inputs.txt! Reverting...");
-			return;
+			return false;
 		}
 
 		//char* file = (char*)pInputs.Read(pInputs.mInfo.size);
-		//if (!file) return;
+		//if (!file) return false;
 
 		//Temp string for reading
 		char temp[32] = "!";
@@ -72,7 +72,7 @@ namespace Input {
 				if (file[i] != '{') break;
 				if (i < 4) {
 					Log("Input region at (%d) does not have a name!", i);
-					return;
+					return false;
 				}
 				//keys{
 				//01234
@@ -194,6 +194,7 @@ namespace Input {
 			}
 			gAxisCount = aSize;
 		}
+		return true;
 	}
 	
 	void UpdateAllInput() {
@@ -267,4 +268,12 @@ namespace Input {
 	bool CheckForKeyboardKeyDown(SDL_Keycode pKeycode) {
 		return (gCurrentKey == pKeycode);
 	}
+
+	COMPONENT_INCLUDE_UNLOAD{
+		delete[] gBindings;
+		gBindingCount = 0;
+		delete[] gAxis;
+		gAxisCount = 0;
+	}
+
 }

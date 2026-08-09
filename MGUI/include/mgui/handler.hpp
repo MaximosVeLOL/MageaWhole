@@ -24,7 +24,7 @@ namespace MGUI {
 
 		Screen();
 
-		void AddWidget(Widget* pWidget, const char* pName = nullptr);
+		u8 AddWidget(Widget* pWidget, const char* pName = nullptr, u8 pWidgetParentID = PARENT_NONE);
 
 		Widget* FindWidget(const char* pName);
 

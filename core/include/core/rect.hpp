@@ -15,7 +15,7 @@ typedef RectTemplate<POSITION_TYPE, SIZE_TYPE> rect;
 
 struct RRect {
 	s16 x = 0, y = 0;
-	//4
+	//4096 max!
 	u16 width : 12;
 	u16 height : 12;
 	//u8 __unused;

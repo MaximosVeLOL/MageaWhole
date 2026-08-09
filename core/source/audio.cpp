@@ -21,7 +21,7 @@ namespace Audio {
 	}
 
 
-	[[nodiscard]] bool Init() {
+	[[nodiscard]] COMPONENT_INCLUDE_INIT {
 		if (!MIX_Init()) return false;
 
 		gMixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, NULL);
@@ -39,19 +39,15 @@ namespace Audio {
 		return (gMixer);
 	}
 
-
-
-
-	void Update() {
+	COMPONENT_INCLUDE_UNLOAD {
 		for (u8 i = 0; i < MAX_SOUNDS;i++) {
-
-			//if (gSoundTracks[i]->state) {
-			//	StopChannel(i);
-			//}
+			MIX_DestroyTrack(gSoundTracks[i]);
 		}
-	}
+		MIX_DestroyTrack(gMusicTrack);
+		delete[] gMusicTrack;
 
-	void Unload();
+		MIX_DestroyMixer(gMixer);
+	}
 
 	u8 PlaySound(MIX_Audio* pAudio) {
 

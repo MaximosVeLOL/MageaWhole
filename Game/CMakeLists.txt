@@ -9,6 +9,8 @@ add_library(Game SHARED
 
 target_include_directories(Game PRIVATE include)
 
+target_link_libraries(Game PRIVATE MGUI)
+
 #target_link_libraries(Game PRIVATE SDL3::SDL3)
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
