@@ -1,6 +1,8 @@
 # ninja log v7
-36	103	8079496656683982	CMakeFiles/Game.dir/source/engine/api.cpp.obj	ff485b9fa228ab99
+175	655	8081270181237144	CMakeFiles/Game.dir/source/engine/api.cpp.obj	ff485b9fa228ab99
 22	102	8079501778144026	CMakeFiles/Game.dir/source/game.cpp.obj	1c6aa66a7eab1f8
-17	161	8079501778104091	CMakeFiles/Game.dir/source/objectDefs.cpp.obj	55421ea87b5732c0
+52	651	8081270180009365	CMakeFiles/Game.dir/source/objectDefs.cpp.obj	55421ea87b5732c0
 161	258	8079501780415960	libGame.dll	47da20ceb6367532
 161	258	8079501780415960	libGame.dll.a	47da20ceb6367532
+40	582	8081270283763336	build.ninja	1269f60f77c39611
+40	582	8081270283728192	C:/source/MageaWhole/Game/build/cmake_install.cmake	1269f60f77c39611

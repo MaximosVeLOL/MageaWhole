@@ -23,7 +23,7 @@ void oPlayer::OnTick() {
 	mVisual.UpdateSprite();
 }
 void oPlayer::CleanUp() {
-	Render::Util::Texture_Unload(mVisual.);
+	Render::Util::Texture_Unload(mVisual.sprite->texture);
 	
 }
 DEFINE_OBJECT(oPlayerExt, oPlayer);

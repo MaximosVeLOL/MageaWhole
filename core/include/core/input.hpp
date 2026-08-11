@@ -27,10 +27,10 @@ COMPONENT_DEFINE_START(useInput, Input)
 	};
 
 	struct Axis {
-		char name[17] = "!";
-		u8 binding1 = 0;
-		u8 binding2 = 0;
-		char state = 0;
+		char name[18] = "!";
+		u8 binding1 = 255;
+		u8 binding2 = 255;
+		//char state = 0;
 	};
 
 	typedef const char* inputname_t;
@@ -54,6 +54,8 @@ COMPONENT_DEFINE_START(useInput, Input)
 	extern bool GetBindingWentUp(inputname_t pCode);
 
 	extern bool CheckForKeyboardKeyDown(SDL_Keycode pKeycode);
+
+	extern char GetAxisState(inputname_t pCode);
 
 	
 COMPONENT_DEFINE_END

@@ -254,6 +254,9 @@ Game_BINARY_DIR:STATIC=C:/source/MageaWhole/Game/build
 //Value Computed by CMake
 Game_IS_TOP_LEVEL:STATIC=ON
 
+//Dependencies for the target
+Game_LIB_DEPENDS:STATIC=general;MGUI;
+
 //Value Computed by CMake
 Game_SOURCE_DIR:STATIC=C:/source/MageaWhole/Game
 

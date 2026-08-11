@@ -11,5 +11,5 @@ target_include_directories(MGUI PUBLIC include)
 
 target_link_libraries(MGUI PRIVATE SDL3::SDL3)
 target_link_libraries(MGUI PRIVATE SDL3_mixer::SDL3_mixer)
-target_link_libraries(MGUI PUBLIC core)
+target_link_libraries(MGUI PRIVATE core)
 

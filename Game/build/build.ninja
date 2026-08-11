@@ -78,7 +78,7 @@ build CMakeFiles/Game.dir/source/engine/api.cpp.obj: CXX_COMPILER__Game_unscanne
 
 build libGame.dll libGame.dll.a: CXX_SHARED_LIBRARY_LINKER__Game_ CMakeFiles/Game.dir/source/objectDefs.cpp.obj CMakeFiles/Game.dir/source/game.cpp.obj CMakeFiles/Game.dir/source/engine/api.cpp.obj
   LINK_FLAGS = -shared
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = -lMGUI  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Game.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

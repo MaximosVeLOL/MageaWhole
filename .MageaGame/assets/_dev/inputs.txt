@@ -6,12 +6,12 @@ left (Left, dpleft)
 right (Right, dpright)
 jump (Space, a)
 
-dev_editor_up (W)
-dev_editor_down (S)
-dev_editor_left (A)
-dev_editor_right (D)
-dev_editor_import (I)
-dev_editor_export (E)
+dev_e_up (W)
+dev_e_down (S)
+dev_e_left (A)
+dev_e_right (D)
+dev_e_import (I)
+dev_e_export (O)
 
 dev_tools_toggle (T)
 
@@ -20,4 +20,7 @@ dev_tools_toggle (T)
 axis {
 hortizontal (right, left)
 vertical (down, up)
+
+dev_e_horizontal (dev_e_right, dev_e_left)
+dev_e_vertical (dev_e_down, dev_e_up)
 }

@@ -2,6 +2,8 @@
 #define __MGUI_WIDGET_H__
 
 #include <mgui/common.hpp>
+#include <core/rect.hpp>
+#include <core/input.hpp>
 
 namespace MGUI {
 

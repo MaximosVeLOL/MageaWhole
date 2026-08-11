@@ -69,7 +69,7 @@ namespace MGUI {
 								dTextEnteredIndex = dTextEnteredMax - 1;
 							}
 							char keyTodo = SDL_GetKeyName(Input::gCurrentKey)[0];
-							char realKey = (SDL_isdigit(keyTodo) ? keyTodo : (Input::gIsShift ? SDL_toupper(keyTodo) : keyTodo));
+							char realKey = (SDL_isdigit(keyTodo) ? keyTodo : (Input::gIsShift ? keyTodo : SDL_tolower(keyTodo)));
 
 							dTextEntered[dTextEnteredIndex++] = realKey;
 						}

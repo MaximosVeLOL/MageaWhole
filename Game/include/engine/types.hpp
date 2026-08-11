@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef __ENGINE_TYPES_H__
 #define __ENGINE_TYPES_H__
 

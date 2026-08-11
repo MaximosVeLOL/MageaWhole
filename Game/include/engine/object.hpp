@@ -15,8 +15,8 @@ struct Transform {
 	u8 xScale : 4, yScale : 4;
 
 	bool Overlaps(Transform pOther);
-	rect AsRect();
-	RRect AsRRect();
+	rect AsRect() { return { position.x, position.y, width, height }; }
+	RRect AsRRect() { return { position.x, position.y, width, height }; }
 
 };
 

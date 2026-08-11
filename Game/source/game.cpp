@@ -5,6 +5,8 @@
 #include <mgui/elements/all.hpp>
 using namespace MGUI;
 
+#pragma region Real Stuff
+
 class menuHack : public Object {
 public:
 	Screen mScreen;
@@ -14,11 +16,21 @@ public:
 	}
 };
 
+void mguiMainButtonStartGameOnPressed() {
+	Log("Start Game!");
+	World::LoadFromFile("ws/test01.ws");
+}
+
+
+#pragma endregion
+
+
 EXPORT bool Init() {
+	Engine::gEngine.Log("!!Start of game!");
 	menuHack* h = new menuHack();
 	h->mScreen.AddWidget(new wLabel({480, 100}, "MAIN MENU"));
 	s16 buttonOffset = 300;
-	h->mScreen.AddWidget(new wButton({ 480 - 50, buttonOffset + 20, 100, 20 }, []() -> void {Engine::gEngine.Log("Load game");}, "Start Game"));
+	h->mScreen.AddWidget(new wButton({ 480 - 50, buttonOffset + 20, 100, 20 }, mguiMainButtonStartGameOnPressed, "Start Game"));
 	World::AddObject(h);
 
 	//Engine::gEngine.Log("!!Start of game!!");

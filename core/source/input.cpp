@@ -69,7 +69,8 @@ namespace Input {
 			switch (mode) {
 			case 0: //Region checks
 				//Check for the region start char
-				if (file[i] != '{') break;
+				if (file[i] != '{')
+					break;
 				if (i < 4) {
 					Log("Input region at (%d) does not have a name!", i);
 					return false;
@@ -78,12 +79,20 @@ namespace Input {
 				//01234
 				//Result:
 				//keys
-				temp[tempIndex + 1] = '\0';
+				//Before 8/10/26/7:49 PM, this was tempIndex + 1,
+				//And because temp only included the null terminators, no errors occured,
+				//And it only failed because of the axis region. SMH my head
+				temp[tempIndex] = '\0';
 				if (SDL_strcmp(temp, "bind") == 0) {
 					mode = 1; //Detect keys
 				}
 				else if (SDL_strcmp(temp, "axis") == 0) {
-					mode = 3; //Detect
+					mode = 3; //Detect axis
+				}
+				else {
+					Log("Undefined region! (%s)", temp);
+					delete[] file;
+					return false;
 				}
 				doSkip = true;
 				break;
@@ -92,6 +101,7 @@ namespace Input {
 				if (file[i] == '}') {
 					mode = 0;
 					doSkip = true;
+					break;
 				}
 				else if (file[i] != '(') break;
 				temp[tempIndex] = '\0';
@@ -148,16 +158,105 @@ namespace Input {
 				
 				break;
 
+				//These are simple copy and pastes from the key section.
+				//Any updates from them should be put here!!!
+
 			case 3: //Detect axis name
-				throw("Unimplemented!");
+				//throw("Unimplemented!");
+				if (file[i] == '}') {
+					mode = 0;
+					doSkip = true;
+					break; //We shouldn't put other data after axises, but we can, so whatevers!
+				}
+				else if (file[i] != '(') break;
+
+				//up (Up, dpup)
+				//Remove whitespaces
+				//up(Up,dpup)
+				//Show our part
+				//up(
+				//012
+				//tempIndex = 2
+				//Add null terminator
+				//up\0
+				tempAxis.push_back(Axis());
+				//strcopy
+				if (tempIndex > 18) throw("tempIndex for binding name is above 18! Please use a shorter name!");
+				for (u8 j = 0; j < tempIndex;j++) {
+					tempAxis.back().name[j] = temp[j];
+				}
+				mode = 4;
+				//TODO - check if this is okay
+				doSkip = true;
 
 				break;
 
-			}
+			case 4: {//Parse key parameters
+				if (file[i] == ')') {
+					temp[tempIndex] = '\0';
+					//Check for 2 parameters
+					//Which means we are using
+					//keyboard and gamepad
+
+					//(right, left)
+					//right\0left\0
+
+					//01234 56789 10
+					//10 total size!
+					//5 length of left side
+					//4 length on right side
+
+					//Find first parameter key using left side (null terminated)
+					u8 j = 0;
+
+					//If we use address array hacks, we can use the array's address + strlen to get the right side (null terminated)!
+
+
+					//A little hack to save on stack and variables!
+					tempVar = static_cast<u8>(tempBindings.size());
+					char* rightSide = (&temp[0] + SDL_strlen(temp) + 1);
+					for (; j < tempVar;j++) {
+						//1st argument
+						if (SDL_strcmp(tempBindings.at(j).name, temp) == 0) {
+							tempAxis.back().binding1 = j;
+							//Get the array index of the null terminated string
+							
+							//break;
+						}
+						//2nd argument
+						else if (SDL_strcmp(tempBindings.at(j).name, rightSide) == 0) {
+							tempAxis.back().binding2 = j;
+							//break;
+						}
+					}
+					if (j == tempVar) {
+						Log("Failed to find input binding for axis with the name of (%s)! (binding name: %s)", tempAxis.back().name, temp);
+					}
+					
+					mode = 3; //This was needed even without the hack, great minds think alike.
+					doSkip = true;
+				}
+				else if (file[i] == ',') {
+					//up(Up, dpup)
+					//Up,dpup
+					//0123456
+					//tempIndex = 2
+					//Skip so it doesn't get overwritten
+					temp[tempIndex++] = '\0';
+					goto _continueHack;
+					//doSkip = true;
+				}
+
+			} break;
+
+			} //End of switch case
 			if (doSkip) {
 				i++;
 				doSkip = false;
 				tempIndex = 0;
+				continue;
+			_continueHack:
+				i++;
 				continue;
 			}
 
@@ -186,7 +285,7 @@ namespace Input {
 			gAxis = new Axis[aSize];
 			for (u32 i = 0; i < aSize;i++) {
 				Axis& a = tempAxis.at(i);
-				for (u8 j = 0; j < 16;i++) {
+				for (u8 j = 0; j < 18;j++) {
 					gAxis[i].name[j] = a.name[j];
 				}
 				gAxis[i].binding1 = a.binding1;
@@ -218,15 +317,6 @@ namespace Input {
 				return &gStates[i];
 		}
 		return nullptr;
-	}
-
-	char GetAxisState(inputname_t pName) {
-		for (u8 i = 0; i < gAxisCount;i++) {
-			if (SDL_strcmp(gAxis[i].name, pName) == 0) {
-				return gAxis[i].state;
-			}
-		}
-		return 0;
 	}
 
 	bool GetBindingIsUp(inputname_t pCode) {
@@ -269,8 +359,19 @@ namespace Input {
 		return (gCurrentKey == pKeycode);
 	}
 
+	char GetAxisState(inputname_t pCode) {
+		for (u8 i = 0; i < gAxisCount;i++) {
+			Axis& a = gAxis[i];
+			if (SDL_strcmp(a.name, pCode) == 0) {
+				
+				return static_cast<char>(gStates[a.binding1].current - gStates[a.binding2].current);
+			}
+		}
+	}
+
 	COMPONENT_INCLUDE_UNLOAD{
 		delete[] gBindings;
+		delete[] gStates;
 		gBindingCount = 0;
 		delete[] gAxis;
 		gAxisCount = 0;

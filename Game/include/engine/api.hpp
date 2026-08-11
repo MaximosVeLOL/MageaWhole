@@ -12,7 +12,7 @@ namespace Input {
 	typedef const char* inputname_t;
 }
 namespace Render {
-	typedef void* texture_t;
+	typedef void texture_t;
 }
 
 namespace Engine {
@@ -25,6 +25,11 @@ namespace Engine {
 		bool(*Asset_Request)(void** pOutput, const char* pDirectory, void(*AssetLoader)(void**, File), bool pDirectoryIsAsset);
 		//Add an instance to the world, should probably make this easier
 		void(*World_AddInstance)(Object* pObject);
+		void(*World_ResetObjects)();
+		void(*World_ResetCollision)();
+		void(*World_Reset)();
+		void(*World_LoadFromFile)(const char*, bool);
+
 
 		//Asset Loaders
 		void (*AL_BasicAsset)(void**, File);
@@ -71,6 +76,19 @@ namespace World {
 	inline void AddObject(Object* pObject) {
 		Engine::gEngine.World_AddInstance(pObject);
 	}
+	inline void ResetObjects() {
+		Engine::gEngine.World_ResetObjects();
+	}
+	inline void ResetCollision() {
+		Engine::gEngine.World_ResetCollision();
+	}
+	inline void Reset() {
+		Engine::gEngine.World_Reset();
+	}
+
+	inline void LoadFromFile(const char* pDirectory, bool pReset = true) {
+		Engine::gEngine.World_LoadFromFile(pDirectory, pReset);
+	}
 }
 namespace Input {
 	inline bool GetBindingIsUp(const char* pCode) {
@@ -99,12 +117,12 @@ namespace Render {
 		}
 	}
 }
-
+/*
 inline void Log(const char* pFormat) {
 	Engine::gEngine.Log(pFormat);
 }
 inline void format(const char* pFormat) {
 	Engine::gEngine.format(pFormat);
 }
-
+*/
 #endif

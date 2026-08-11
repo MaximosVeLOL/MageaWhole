@@ -5,7 +5,7 @@
 //A component is something that can be used when needed, and unused when not.
 
 #define COMPONENT_DEFINE_START(delcName, name) \
-	static bool delcName = true;	\
+	constexpr bool delcName = true;	\
 	namespace name {
 
 #define COMPONENT_DEFINE_END }
@@ -22,15 +22,15 @@
 #define COMPONENT_USE_DECLARE(delcName) declName = true
 
 
-#define COMPONENT_USE_CHECK(delcName) if(delcName)
+#define COMPONENT_USE_CHECK(delcName) if constexpr(delcName)
 
 //Basic component calling stuff
-#define COMPONENT_CALL_INIT(delcName, name) if(delcName) name::Init()
+#define COMPONENT_CALL_INIT(delcName, name) if constexpr(delcName) name::Init()
 #define COMPONENT_CALL_INIT_AND_CHECK(delcName, name, code) \
-	if(delcName) { [[unlikely]]\
-		if(!name::Init()) code \
+	if constexpr(delcName) { \
+		if(!name::Init()) [[unlikely]] code \
 	}
-#define COMPONENT_CALL_UPDATE(delcName, name) if(delcName) name::Update() 
-#define COMPONENT_CALL_UNLOAD(delcName, name) if(delcName) name::Unload() 
+#define COMPONENT_CALL_UPDATE(delcName, name) if constexpr(delcName) name::Update() 
+#define COMPONENT_CALL_UNLOAD(delcName, name) if constexpr(delcName) name::Unload() 
 
 #endif
