@@ -1,4 +1,4 @@
-#include <core/input.hpp>
+#include <core/comp/input.hpp>
 
 #include <core/common.hpp>
 
@@ -14,7 +14,7 @@ namespace Input {
 
 	
 
-	MouseState gMouseState = {0};
+	MouseState gMouseState = MouseState();
 
 	InputBinding* gBindings = nullptr;
 	u8 gBindingCount = 0;
@@ -22,7 +22,7 @@ namespace Input {
 	Axis* gAxis = nullptr;
 	u8 gAxisCount = 0;
 
-	COMPONENT_INCLUDE_INIT {
+	COMPONENT_DEFINE_INIT {
 		size_t fileSize = 0;
 		u8* file = (u8*)SDL_LoadFile(FileSystem::GetStringAsAsset("_dev/inputs.txt"), &fileSize);
 		if (!file) {
@@ -369,7 +369,7 @@ namespace Input {
 		}
 	}
 
-	COMPONENT_INCLUDE_UNLOAD{
+	COMPONENT_DEFINE_UNLOAD{
 		delete[] gBindings;
 		delete[] gStates;
 		gBindingCount = 0;

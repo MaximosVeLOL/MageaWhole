@@ -1,6 +1,6 @@
 #pragma once
 
-#include <engine/object.hpp>
+#include <magea/object.hpp>
 
 class oPlayer : public Object {
 public:

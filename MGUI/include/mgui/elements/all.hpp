@@ -6,4 +6,5 @@
 #include <mgui/elements/wEnum.hpp>
 #include <mgui/elements/wTextInput.hpp>
 #include <mgui/elements/wScrollbar.hpp>
+#include <mgui/elements/wTexture.hpp>
 #endif

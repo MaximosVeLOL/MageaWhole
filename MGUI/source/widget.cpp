@@ -1,7 +1,8 @@
 #include <mgui/widget.hpp>
-#include <core/renderer.hpp>
+#include <core/comp/renderer.hpp>
 #include <mgui/handler.hpp>
 #include <mgui/style.hpp>
+#include <core/comp/input.hpp>
 
 namespace MGUI {
 

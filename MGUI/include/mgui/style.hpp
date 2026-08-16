@@ -1,7 +1,7 @@
 #ifndef __STYLE_H__
 #define __STYLE_H__
 
-#include "common.hpp"
+#include <mgui/common.hpp>
 
 namespace Style {
 
@@ -16,15 +16,17 @@ namespace Style {
 		C_LAST,
 	};
 	enum TextureID : u8 {
-		T_WINDOW = 0,
-		T_BUTTON,
+		T_BACKGROUND = 0,
 		T_CUSTOM0,
 		T_CUSTOM1,
 		T_CUSTOM2,
 		T_CUSTOM3,
 		T_LAST,
 	};
-	Render::Color GetColorByID(ColorID pID);
-	Render::texture_t* GetTextureByID(TextureID pID);
+	MGUI_API void LoadTextures();
+	MGUI_API Render::Color GetColorByID(ColorID pID);
+	MGUI_API Render::texture* GetTextureByID(TextureID pID);
+	MGUI_API void AddCustomTexture(Render::texture* pTexture);
+	MGUI_API void FlushTextureByID(TextureID pID);
 }
 #endif

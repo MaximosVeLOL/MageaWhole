@@ -1,13 +1,19 @@
-#include <engine/object.hpp>
-#include <engine/api.hpp>
-#include <engine/sprite.hpp>
+#include <magea/object.hpp>
+#include <magea/asset.hpp>
+#include <magea/sprite.hpp>
 
+#include <core/comp/input.hpp>
 
 #include <player.hpp>
 #include <enemy.hpp>
 
+#include <core/common.hpp>
+#include <core/file.hpp>
+
+#include <common.hpp>
+
 void oPlayer::PreCache() {
-	Engine::gEngine.Asset_Request(&mVisual.texture, "texture/plr.png", Engine::gEngine.AL_Texture, true);
+	Asset::Request((void**) & mVisual.texture, "texture/plr.png", Asset::AL_Texture, true);
 	//Asset::RequestTexture(&mVisual.texture, "texture/plr.png");
 	mVisual.useSprite = false;
 	mTransform.width = 50;
@@ -15,16 +21,15 @@ void oPlayer::PreCache() {
 }
 
 void oPlayer::OnTick() {
-	char moveX = (Engine::gEngine.Input_GetBindingIsDown("right") - Engine::gEngine.Input_GetBindingIsDown("right"));
+	char moveX = (Input::GetBindingIsDown("right") - Input::GetBindingIsDown("right"));
 	mTransform.velocity.x = moveX * 10;
-	if (Engine::gEngine.Input_GetBindingWentDown("jump")) {
+	if (Input::GetBindingWentDown("jump")) {
 		mTransform.velocity.y = -10;
 	}
 	mVisual.UpdateSprite();
 }
 void oPlayer::CleanUp() {
-	Render::Util::Texture_Unload(mVisual.sprite->texture);
-	
+	mVisual.sprite->texture->Destroy();
 }
 DEFINE_OBJECT(oPlayerExt, oPlayer);
 

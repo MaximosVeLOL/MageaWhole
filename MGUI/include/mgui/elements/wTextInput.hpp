@@ -2,7 +2,7 @@
 
 
 #include <mgui/widget.hpp>
-#include <core/input.hpp>
+#include <core/comp/input.hpp>
 #include <mgui/style.hpp>
 
 namespace MGUI {

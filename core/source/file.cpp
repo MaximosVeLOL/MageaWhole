@@ -1,5 +1,5 @@
 #include <core/file.hpp>
-#include <core/renderer.hpp>
+#include <core/comp/renderer.hpp>
 
 namespace FileSystem {
 	const char* GetBaseGameDirectory() {
@@ -23,7 +23,7 @@ namespace FileSystem {
 	}
 
 	void CreateFile(SDL_DialogFileCallback pOnSelect, SDL_DialogFileFilter* pFilters, int pFilterAmount, const char* pDefaultFolder) {
-		SDL_ShowSaveFileDialog(pOnSelect, nullptr, Render::GetWindow(), pFilters, pFilterAmount, pDefaultFolder);
+		SDL_ShowSaveFileDialog(pOnSelect, NULL, Render::GetWindow(), pFilters, pFilterAmount, pDefaultFolder);
 	}
 
 	char* GetDirectoryFileName(const char* pDirectory, bool pDirectoryIsAsset) {

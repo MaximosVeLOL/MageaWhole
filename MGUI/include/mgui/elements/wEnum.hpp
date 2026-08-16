@@ -65,7 +65,7 @@ namespace MGUI {
 			u8 strlen;
 			dValues = new char* [pValueAmount];
 			for (u8 i = 0; i < pValueAmount;i++) {
-				strlen = SDL_strlen(pValues[i]);
+				strlen = Strlen(pValues[i]);
 				dValues[i] = new char[strlen + 1];
 				SDL_strlcpy(dValues[i], pValues[i], strlen + 1);
 			}

@@ -11,7 +11,7 @@ struct RectTemplate {
 };
 
 //SMH my head
-typedef RectTemplate<POSITION_TYPE, SIZE_TYPE> rect;
+typedef RectTemplate<POSITION_TYPE, SIZE_TYPE> Rect;
 
 struct RRect {
 	s16 x = 0, y = 0;
@@ -19,8 +19,8 @@ struct RRect {
 	u16 width : 12;
 	u16 height : 12;
 	//u8 __unused;
-	operator rect() {
-		return { static_cast<short>(x), static_cast<short>(y), static_cast<u8>(width), static_cast<u8>(height) };
+	operator Rect() {
+		return { static_cast<POSITION_TYPE>(x), static_cast<POSITION_TYPE>(y), static_cast<SIZE_TYPE>(width), static_cast<SIZE_TYPE>(height) };
 	}
 };
 

@@ -1,4 +1,4 @@
-#include <core/renderer.hpp>
+#include <core/comp/renderer.hpp>
 #include <core/file.hpp> //For the filesystem, used by the font
 
 
@@ -20,7 +20,7 @@ namespace Render {
 	AlignMode gAlignMode = { A_LEFT, A_MIDDLE };
 
 	//336 bytes (for HA)
-	texture_t* gFont = nullptr;
+	texture gFont = {nullptr};
 
 	//The actual size of the font in the image file
 	constexpr u8 gFontSize = 16;
@@ -28,38 +28,6 @@ namespace Render {
 
 	RRect getTexturePartFromAscii(char l) {
 		return { static_cast<s16>((l - 33) * gFontSize), 0, gFontSize, gFontSize };
-	}
-
-	namespace Util {
-		s32 Texture_GetWidth(texture_t* pTexture) {
-			if (sUseHA) {
-				float readWidth = 0;
-				if (!SDL_GetTextureSize(static_cast<SDL_Texture*>(pTexture), &readWidth, NULL)) {
-					return -1;
-				}
-				s32 ret = SDL_lroundf(readWidth);
-				return ret;
-			}
-			return -1;
-		}
-		s32 Texture_GetHeight(texture_t* pTexture) {
-			if (sUseHA) {
-				float readHeight = 0;
-				if (!SDL_GetTextureSize(static_cast<SDL_Texture*>(pTexture), NULL, &readHeight)) {
-					return -1;
-				}
-				s32 ret = SDL_lroundf(readHeight);
-				return ret;
-			}
-			return -1;
-		}
-		void Texture_Unload(texture_t* pTexture) {
-			if (sUseHA) {
-				SDL_DestroyTexture(static_cast<SDL_Texture*>(pTexture));
-				return;
-			}
-			SDL_DestroySurface(static_cast<SDL_Surface*>(pTexture));
-		}
 	}
 
 	SDL_Renderer* GetRender() { return gRenderer; }
@@ -80,7 +48,7 @@ namespace Render {
 	}
 
 
-	[[nodiscard]] bool Init() {
+	COMPONENT_DEFINE_INIT {
 		if (!SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) return false;
 		gWindow = SDL_CreateWindow("Application", 960, 540, SDL_WINDOW_RESIZABLE);
 		if (!gWindow)
@@ -96,15 +64,14 @@ namespace Render {
 		SDL_Surface* s = SDL_LoadPNG(FileSystem::GetStringAsAsset("texture/font_debug.png"));
 		if (s) {
 			if (sUseHA) {
-				gFont = SDL_CreateTextureFromSurface(GetRender(), s);
+				gFont.mTexture = SDL_CreateTextureFromSurface(GetRender(), s);
 				SDL_DestroySurface(s);
 				return true;
 			}
-			gFont = s;
+			gFont.mTexture = s;
 		}
 		return true;
 	}
-
 	void Clear() {
 		if (sUseHA) {
 			SDL_RenderClear(GetRender());
@@ -151,21 +118,21 @@ namespace Render {
 		FillRect(pPosition);
 	}
 
-	void Texture(void* pTexture, RRect pPosition) {
+	void Texture(texture* pTexture, RRect pPosition) {
 		if (sUseHA) {
 			SDL_FRect pos = RectToSDLFloatRect(pPosition);
-			SDL_RenderTexture(GetRender(), static_cast<SDL_Texture*>(pTexture), NULL, &pos);
+			SDL_RenderTexture(GetRender(), pTexture->AsTexture(), NULL, &pos);
 			return;
 		}
-		SDL_Surface* s = static_cast<SDL_Surface*>(pTexture);
+		SDL_Surface* s = pTexture->AsSurface();
 		SDL_Rect pos = RectToSDLRect(pPosition);
 		SDL_BlitSurface(s, NULL, GetSurface(), &pos);
 		//TODO - Implement
 	}
-	void Texture(void* pTexture, RRect pPosition, RRect pPart) {
+	void Texture(texture* pTexture, RRect pPosition, RRect pPart) {
 		SDL_FRect out = RectToSDLFloatRect(pPosition);
 		SDL_FRect src = RectToSDLFloatRect(pPart);
-		SDL_RenderTexture(GetRender(), static_cast<SDL_Texture*>(pTexture), &src, &out);
+		SDL_RenderTexture(GetRender(), pTexture->AsTexture(), &src, &out);
 	}
 
 	s16 Text(vector pPosition, const char* pFormat, ...) {
@@ -175,8 +142,8 @@ namespace Render {
 			pPosition.y -= gFontOutputSize;
 			break;
 		case A_MIDDLE:
-				pPosition.y -= (gFontOutputSize / 2);
-				break;
+			pPosition.y -= (gFontOutputSize / 2);
+			break;
 
 		case A_BOTTOM:
 			//pPosition.y += gFontOutputSize;
@@ -186,36 +153,36 @@ namespace Render {
 		//FillRect({ static_cast<u16>(pPosition.x), static_cast<u16>(pPosition.y), static_cast<u8>(SDL_strlen(pFormat) * gFontOutputSize), gFontOutputSize}, { 255, 0, 255 });
 
 		//if (sUseHA) {
-			SetColor({ 0, 0, 0, 255 });
-			//Get the result of the format
-			RRect result = { pPosition.x, pPosition.y, gFontOutputSize, gFontOutputSize};
-			for (u32 i = 0; i < SDL_strlen(text);i++) {
-				if (text[i] <= 32) {
-					if (text[i] == ' ') {
-						result.x += gFontOutputSize;
-						continue;
-					}
-					else if (text[i] == '\n') {
-						result.y += gFontOutputSize;
-					}
+		SetColor({ 0, 0, 0, 255 });
+		//Get the result of the format
+		RRect result = { pPosition.x, pPosition.y, gFontOutputSize, gFontOutputSize };
+		for (u32 i = 0; i < SDL_strlen(text);i++) {
+			if (text[i] <= 32) {
+				if (text[i] == ' ') {
+					result.x += gFontOutputSize;
 					continue;
 				}
-				else if (SDL_islower(text[i]) || SDL_isdigit(text[i])) {
-					result.x -= 2;
-					//result.width = gFontOutputSize / 2;
+				else if (text[i] == '\n') {
+					result.y += gFontOutputSize;
 				}
-				Texture(gFont, result, getTexturePartFromAscii(text[i]));
-
-				result.x += gFontOutputSize;
+				continue;
 			}
+			else if (SDL_islower(text[i]) || SDL_isdigit(text[i])) {
+				result.x -= 2;
+				//result.width = gFontOutputSize / 2;
+			}
+			Texture(&gFont, result, getTexturePartFromAscii(text[i]));
 
-			//SDL_RenderDebugText(GetRender(), static_cast<float>(pPosition.x), static_cast<float>(pPosition.y), text);
-			delete[] text;
-			return result.x;
-			//SDL_RenderDebugTextFormat(GetRender(), static_cast<float>(pPosition.x), static_cast<float>(pPosition.y), pFormat);
-			//return;
-		//}
-		//delete[] text;
+			result.x += gFontOutputSize;
+		}
+
+		//SDL_RenderDebugText(GetRender(), static_cast<float>(pPosition.x), static_cast<float>(pPosition.y), text);
+		delete[] text;
+		return result.x;
+		//SDL_RenderDebugTextFormat(GetRender(), static_cast<float>(pPosition.x), static_cast<float>(pPosition.y), pFormat);
+		//return;
+	//}
+	//delete[] text;
 	}
 	s16 GetTextWidth(const char* pFormat, ...) {
 		if (!pFormat) return -1;
@@ -245,7 +212,7 @@ namespace Render {
 		SDL_UpdateWindowSurface(gWindow);
 	}
 
-	void Unload() {
+	COMPONENT_DEFINE_UNLOAD {
 		if (sUseHA) {
 			SDL_FlushRenderer(gRenderer);
 

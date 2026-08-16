@@ -1,7 +1,7 @@
 #pragma once
 
 #include <mgui/widget.hpp>
-#include <core/input.hpp>
+#include <core/comp/input.hpp>
 
 namespace MGUI {
 	//You can scroll. Wow.
@@ -21,9 +21,8 @@ namespace MGUI {
 		void(*OnValueChanged)(float pPrev, float pNext) = nullptr;
 
 		void PreCache() override {
-			float sW = (mRect.width / 3);
-			dScrollWidth = SDL_lroundf(sW);
-			if (dScrollValueMax == -1) dScrollValueMax = (mRect.width / 100);
+			dScrollWidth = static_cast<u8>(SDL_lroundf(mRect.width / 3));
+			if (dScrollValueMax == -1) dScrollValueMax = static_cast<float>(mRect.width / 100);
 		}
 
 		void OnRender() override {

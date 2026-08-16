@@ -1,7 +1,7 @@
 #include <mgui/handler.hpp>
 #include <mgui/widget.hpp>
 #include <mgui/style.hpp>
-#include <core/input.hpp>
+#include <core/comp/input.hpp>
 
 namespace MGUI {
 	
@@ -92,6 +92,9 @@ namespace MGUI {
 			}
 		}
 		prevMouseState = Input::gMouseState.state;
+	}
+
+	void Screen::Destroy() {
 	}
 
 	Screen::Screen() {

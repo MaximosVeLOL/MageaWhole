@@ -14,6 +14,7 @@
 template<typename R, typename T>
 inline R Grid(T x, unsigned char pGrid) {
 	return static_cast<R>(SDL_lroundf(x / pGrid) * pGrid);
+	//return static_cast<R>(x / pGrid * pGrid);
 }
 
 #endif

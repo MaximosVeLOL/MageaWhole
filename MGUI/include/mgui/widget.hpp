@@ -3,14 +3,15 @@
 
 #include <mgui/common.hpp>
 #include <core/rect.hpp>
-#include <core/input.hpp>
+#include <core/comp/input.hpp>
+#include <mgui/style.hpp>
 
 namespace MGUI {
 
 	class Screen;
 
 
-	class Widget {
+	class MGUI_API Widget {
 	private:
 		Screen* mParent = nullptr;
 		u8 mID = 0; //Our index in the screen, IDK why we need this
@@ -67,6 +68,9 @@ namespace MGUI {
 		//Update every frame
 		virtual void Tick() {}
 
+		//When the widget gets destroyed
+		virtual void CleanUp() {}
+
 		void Render() {
 			if (!mVisible) return;
 			OnRender();
@@ -76,6 +80,14 @@ namespace MGUI {
 
 		Widget() {}
 		Widget(RRect pRect) : mRect(pRect) {}
+
+		~Widget() {
+			if (mBackground.isTexture) {
+				Style::FlushTextureByID((Style::TextureID)mBackground.id);
+			}
+			CleanUp();
+			
+		}
 
 		friend class Screen;
 

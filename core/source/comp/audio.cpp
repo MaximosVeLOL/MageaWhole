@@ -1,4 +1,4 @@
-#include <core/audio.hpp>
+#include <core/comp/audio.hpp>
 
 
 
@@ -21,7 +21,7 @@ namespace Audio {
 	}
 
 
-	[[nodiscard]] COMPONENT_INCLUDE_INIT {
+	/* [[nodiscard]] */ COMPONENT_DEFINE_INIT{
 		if (!MIX_Init()) return false;
 
 		gMixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, NULL);
@@ -39,7 +39,7 @@ namespace Audio {
 		return (gMixer);
 	}
 
-	COMPONENT_INCLUDE_UNLOAD {
+	COMPONENT_DEFINE_UNLOAD {
 		for (u8 i = 0; i < MAX_SOUNDS;i++) {
 			MIX_DestroyTrack(gSoundTracks[i]);
 		}

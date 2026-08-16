@@ -2,17 +2,25 @@ cmake_minimum_required(VERSION 3.10)
 #This is an example of a shared library that uses Magea
 project(Game)
 
+# Enable Hot Reload for MSVC compilers if supported.
+if (POLICY CMP0141)
+  cmake_policy(SET CMP0141 NEW)
+  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
+endif()
+
 add_library(Game SHARED
 	"source/objectDefs.cpp"
-	"source/game.cpp"
-	"source/engine/api.cpp" )
+	"source/game.cpp" )
 
 target_include_directories(Game PRIVATE include)
 
+target_link_libraries(Game PRIVATE core)
 target_link_libraries(Game PRIVATE MGUI)
+target_link_libraries(Game PRIVATE Magea)
 
 #target_link_libraries(Game PRIVATE SDL3::SDL3)
 
-set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+#set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 #target_link_libraries(Game PRIVATE Magea)
+

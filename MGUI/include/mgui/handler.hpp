@@ -13,7 +13,7 @@ namespace MGUI {
 		bool prev : 4;
 	};
 
-	class Screen {
+	class MGUI_API Screen {
 	public:
 		Widget** mWidgets = nullptr;
 		//Names for each widget id
@@ -29,6 +29,9 @@ namespace MGUI {
 		Widget* FindWidget(const char* pName);
 
 		void UpdateAndRender();
+
+		//Destroys all the widgets, and other neccessary information
+		void Destroy();
 	};
 }
 

@@ -1,5 +1,20 @@
 cmake_minimum_required(VERSION 3.10)
 
+#[===[
+add_subdirectory(core)
+add_subdirectory(vendored/SDL)
+add_subdirectory(vendored/SDL_mixer)
+
+project(TestCore)
+
+add_executable(TestCore 
+	"main.cpp"
+)
+
+target_link_libraries(TestCore SDL3::SDL3)
+target_link_libraries(TestCore core)
+]===]
+
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -32,18 +47,22 @@ set(SDL_INSTALL OFF CACHE BOOL "" FORCE)
 
 project(MageaGame)
 
+
 add_executable(MageaGame
 	main.cpp
 )
+set_property(TARGET MageaGame PROPERTY CXX_STANDARD 23)
 
+#if (CMAKE_VERSION VERSION_GREATER 3.12)
+#endif()
+
+#Uses SDL
+target_link_libraries(MageaGame PRIVATE core)
+#Uses core & SDL
+target_link_libraries(MageaGame PRIVATE MGUI)
+#Uses everything but Game
+target_link_libraries(MageaGame PRIVATE Magea)
+#Uses nothing
+target_link_libraries(MageaGame PRIVATE SDL3::SDL3)
 #Uses MGUI & SDL?
 target_link_libraries(MageaGame PRIVATE Game)
-#Uses SDL
-target_link_libraries(MageaGame PUBLIC core)
-#Uses core & SDL
-target_link_libraries(MageaGame PUBLIC MGUI)
-#Uses everything but Game
-target_link_libraries(MageaGame PUBLIC Magea)
-#Uses nothing
-target_link_libraries(MageaGame PUBLIC SDL3::SDL3)
-
