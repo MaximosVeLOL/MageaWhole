@@ -33,10 +33,10 @@ endif()
 
 project(MageaGame)
 
-add_executable(MageaGame
-	main.cpp
-)
-set_property(TARGET MageaGame PROPERTY CXX_STANDARD 23)
+add_executable(MageaGame main.cpp )
+
+set_property(TARGET MageaGame core MGUI Game Magea MageaDevTools PackedFileUtil PROPERTY CXX_STANDARD 23)
+#target_compile_features(MageaGame core MGUI Game Magea MageaDevTools PRIVATE cxx_std_23)
 
 #if (CMAKE_VERSION VERSION_GREATER 3.12)
 #endif()

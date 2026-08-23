@@ -137,4 +137,50 @@ namespace FileSystem {
 		return ret;
 	}
 	
+	struct PackedFile {
+
+	};
+	
+	/* Include directories
+	File format:
+	* Name
+	* Folder ID (up to 4 bytes of u8 ids)
+	* Size
+	* Data
+	Directory format:
+	* Name
+	* Children
+
+	* Pack format
+	* header
+	* Dir count
+	* Dir names (null terminated)
+	* 
+	* 
+	
+
+	Folder format:
+	* Name
+	* Content amount
+	* Contents
+	Content format:
+	* Name
+	* type (folder or file)
+	* Folder format or file format
+	
+	File format:
+	* size
+	* data
+	
+	*/
+
+
+	void Init() {
+#if CO_PACKED_FILES
+
+#else
+
+#endif
+
+	}
 }

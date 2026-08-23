@@ -224,9 +224,9 @@ namespace FileSystem {
 			}
 			return ret;
 		}
-		void* Read(u8 pLength) {
+		void* Read(u32 pLength) {
 			u8* ret = new u8[pLength];
-			u8 readBytes = static_cast<u8>(SDL_ReadIO(mStream, ret, pLength));
+			u32 readBytes = static_cast<u32>(SDL_ReadIO(mStream, ret, pLength));
 			if (readBytes != pLength) {
 				if (ReachedEndOfFile()) {
 					Log("Reached end of file!");
@@ -297,6 +297,8 @@ namespace FileSystem {
 		}
 	};
 #endif
+
+	CORE_EXPORT void Init();
 }
 
 #endif
