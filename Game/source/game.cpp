@@ -1,6 +1,4 @@
 #include <player.hpp>
-#include <engine/api.hpp>
-
 
 #include <mgui/handler.hpp>
 #include <mgui/elements/all.hpp>
@@ -12,23 +10,20 @@
 
 using namespace MGUI;
 
-#pragma region Real Stuff
+void FlushMGUI() {
+	RemoveScreen(0);
+}
 
 void mguiMainButtonStartGameOnPressed() {
 	Log("Start Game!");
-	World::LoadFromFile("ws/test01.ws", true);
+	World::LoadFromFile("ws/test01", true);
+	SetPostCallEvent(FlushMGUI);
 }
-
-
-#pragma endregion
-
-//The current active screen
-Screen* gScreen = nullptr;
 
 EXPORT bool Init() {
 	//Engine::gEngine.Log("!!Start of game!");
 	Log("!!Start of game!!");
-	gScreen = new Screen();
+	Screen* gScreen = new Screen();
 	Render::texture* t;
 	Asset::Request((void**) & t, "texture/ui_titlescreen.png", Asset::AL_Texture, true);
 	gScreen->AddWidget(new wTexture({ 0, 0, 960, 540 }, t));
@@ -36,7 +31,9 @@ EXPORT bool Init() {
 	gScreen->AddWidget(new wLabel({480, 100}, "MAIN MENU"));
 	s16 buttonOffset = 300;
 	gScreen->AddWidget(new wButton({ 430, static_cast<s16>(buttonOffset + 20), 100, 20 }, mguiMainButtonStartGameOnPressed, "Start Game"));
-	gScreen->Destroy();
+	//gScreen->Destroy();
+
+	AddScreen(gScreen);
 
 
 	//Engine::gEngine.Log("!!Start of game!!");
@@ -49,12 +46,22 @@ EXPORT u8 GetExpectedEngineVersion() {
 }
 
 EXPORT void Update() {
-	if (gScreen)
-		gScreen->UpdateAndRender();
-	
+}
+
+EXPORT void PreUpdate() {
+
+}
+
+EXPORT void PostUpdate() {
+
+}
+
+EXPORT void OnRender() {
+
 }
 
 EXPORT void Unload() {
+	Log("!!End of game!!");
 	//Engine::gEngine.Log("!!End of game!!");
 }
 /*

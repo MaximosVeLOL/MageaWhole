@@ -367,6 +367,8 @@ namespace Input {
 				return static_cast<char>(gStates[a.binding1].current - gStates[a.binding2].current);
 			}
 		}
+		Log("(Input::GetAxisState) Failed to find input name for (%s)!", pCode);
+		return 0;
 	}
 
 	COMPONENT_DEFINE_UNLOAD{

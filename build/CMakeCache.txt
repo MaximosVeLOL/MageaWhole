@@ -371,6 +371,18 @@ FluidSynth_LINK_LIBRARIES:STRING=
 //Extra link flags of FluidSynth
 FluidSynth_LINK_OPTIONS:STRING=
 
+//Value Computed by CMake
+Game_BINARY_DIR:STATIC=C:/source/MageaWhole/build/Game
+
+//Value Computed by CMake
+Game_IS_TOP_LEVEL:STATIC=OFF
+
+//Dependencies for the target
+Game_LIB_DEPENDS:STATIC=general;core;general;MGUI;general;Magea;
+
+//Value Computed by CMake
+Game_SOURCE_DIR:STATIC=C:/source/MageaWhole/Game
+
 //Extra compile options of LibUSB
 LibUSB_COMPILE_OPTIONS:STRING=
 
@@ -492,22 +504,22 @@ PKG_CONFIG_EXECUTABLE:FILEPATH=C:/msys64/ucrt64/bin/pkg-config.exe
 PkgConfig_DIR:PATH=PkgConfig_DIR-NOTFOUND
 
 //Value Computed by CMake
-SDL3_BINARY_DIR:STATIC=C:/source/MageaWhole/build/Magea/vendored/SDL
+SDL3_BINARY_DIR:STATIC=C:/source/MageaWhole/build/vendored/SDL
 
 //Value Computed by CMake
 SDL3_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-SDL3_SOURCE_DIR:STATIC=C:/source/MageaWhole/Magea/vendored/SDL
+SDL3_SOURCE_DIR:STATIC=C:/source/MageaWhole/vendored/SDL
 
 //Value Computed by CMake
-SDL3_mixer_BINARY_DIR:STATIC=C:/source/MageaWhole/build/Magea/vendored/SDL_mixer
+SDL3_mixer_BINARY_DIR:STATIC=C:/source/MageaWhole/build/vendored/SDL_mixer
 
 //Value Computed by CMake
 SDL3_mixer_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-SDL3_mixer_SOURCE_DIR:STATIC=C:/source/MageaWhole/Magea/vendored/SDL_mixer
+SDL3_mixer_SOURCE_DIR:STATIC=C:/source/MageaWhole/vendored/SDL_mixer
 
 //Enable AIFF audio
 SDLMIXER_AIFF:BOOL=ON

@@ -33,6 +33,20 @@ namespace MGUI {
 		//Destroys all the widgets, and other neccessary information
 		void Destroy();
 	};
+
+	MGUI_API void Init();
+
+	MGUI_API void AddScreen(Screen* pScreen);
+
+	MGUI_API void UpdateAndRender();
+
+	MGUI_API Screen* GetScreen(u8 pIndex);
+
+	MGUI_API void RemoveScreen(u8 pIndex);
+
+	MGUI_API void PostCall();
+
+	MGUI_API void SetPostCallEvent(void(*pEvent)());
 }
 
 

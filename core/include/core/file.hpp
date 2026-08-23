@@ -178,12 +178,12 @@ namespace FileSystem {
 			if (pDirectoryAsFileSystem) {
 				char* realDirectory = FileSystem::GetStringAsAsset(pDirectory);
 
-				string_size_t l = SDL_strlen(realDirectory);
+				string_size_t l = Strlen(realDirectory);
 				mDirectory = new char[l + 1];
 				SDL_strlcpy(mDirectory, realDirectory, l + 1);
 			}
 			else {
-				string_size_t l = SDL_strlen(pDirectory);
+				string_size_t l = Strlen(pDirectory);
 				mDirectory = new char[l + 1];
 				SDL_strlcpy(mDirectory, pDirectory, l + 1);
 			}
@@ -211,7 +211,7 @@ namespace FileSystem {
 		T Read() {
 			if (!mStream) return T();
 			T ret = T();
-			u8 readBytes = SDL_ReadIO(mStream, &ret, sizeof(T));
+			u8 readBytes = static_cast<u8>(SDL_ReadIO(mStream, &ret, sizeof(T)));
 			if (readBytes != sizeof(T)) {
 				if (ReachedEndOfFile()) {
 					Log("Reached end of file!");
@@ -226,7 +226,7 @@ namespace FileSystem {
 		}
 		void* Read(u8 pLength) {
 			u8* ret = new u8[pLength];
-			u8 readBytes = SDL_ReadIO(mStream, ret, pLength);
+			u8 readBytes = static_cast<u8>(SDL_ReadIO(mStream, ret, pLength));
 			if (readBytes != pLength) {
 				if (ReachedEndOfFile()) {
 					Log("Reached end of file!");

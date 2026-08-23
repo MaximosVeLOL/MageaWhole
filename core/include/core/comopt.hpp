@@ -3,7 +3,7 @@
 
 #pragma region Core Stuff
 
-enum CO_C_BASE_ENUM : unsigned __int8 {
+enum CO_C_BASE_ENUM : unsigned char {
 	CO_C_BASE_STANDARD_CPP = 0, //Use C++ STL
 	CO_C_BASE_STANDARD_C = 1, //Use C STL
 	CO_C_BASE_SDL3 = 2,

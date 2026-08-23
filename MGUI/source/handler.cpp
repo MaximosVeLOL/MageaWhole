@@ -95,11 +95,68 @@ namespace MGUI {
 	}
 
 	void Screen::Destroy() {
+		delete[] mWidgetNames;
+		delete[] mWidgets;
+		delete mHoverStates;
+		mWidgetNames = nullptr;
+		mWidgets = nullptr;
+		mHoverStates = nullptr;
+
 	}
 
 	Screen::Screen() {
 		mWidgets = new Widget * [MAX_WIDGETS];
 		mHoverStates = new HoverState[MAX_WIDGETS];
 		mWidgetNames = new char* [MAX_WIDGETS];
+	}
+
+	Screen** gScreens = nullptr;
+	u8 gScreenCount = 0;
+
+	constexpr u8 SCREEN_MAX = 8;
+
+	void Init() {
+		gScreens = new Screen*[SCREEN_MAX]{ nullptr };
+		//32 * 8
+	}
+
+	void AddScreen(Screen* pScreen) {
+		if (gScreenCount + 1 >= SCREEN_MAX) {
+			Log("(MGUI::AddScreen) Screen count exceeded!");
+			return;
+		}
+		gScreens[gScreenCount++] = pScreen;
+	}
+
+	void UpdateAndRender() {
+		for (u8 i = 0; i < gScreenCount;i++) {
+			gScreens[i]->UpdateAndRender();
+		}
+		PostCall();
+	}
+
+	void RemoveScreen(u8 pIndex) {
+		gScreens[pIndex]->Destroy();
+		//gScreens[pIndex] = nullptr;
+		if (static_cast<short>(gScreenCount - 1) < 0) gScreenCount = 0;
+		else gScreenCount--;
+		for (u8 i = pIndex; i < gScreenCount;i++) {
+			gScreens[i] = gScreens[i + 1];
+		}
+	}
+
+	Screen* GetScreen(u8 pIndex) {
+		return gScreens[pIndex];
+	}
+
+	void(*gPostCallEvent)() = NULL;
+
+	void PostCall() {
+		if (!gPostCallEvent) return;
+		gPostCallEvent();
+	}
+
+	void SetPostCallEvent(void(*pEvent)()) {
+		gPostCallEvent = pEvent;
 	}
 }

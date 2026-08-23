@@ -88,6 +88,10 @@ struct texture {
 	SDL_Surface* AsSurface() {
 		return static_cast<SDL_Surface*>(mTexture);
 	}
+
+	~texture() {
+		Destroy();
+	}
 };
 //752 bytes
 CORE_EXPORT SDL_Renderer* GetRender();

@@ -21,7 +21,7 @@ void oPlayer::PreCache() {
 }
 
 void oPlayer::OnTick() {
-	char moveX = (Input::GetBindingIsDown("right") - Input::GetBindingIsDown("right"));
+	char moveX = Input::GetAxisState("horizontal");
 	mTransform.velocity.x = moveX * 10;
 	if (Input::GetBindingWentDown("jump")) {
 		mTransform.velocity.y = -10;
@@ -29,7 +29,7 @@ void oPlayer::OnTick() {
 	mVisual.UpdateSprite();
 }
 void oPlayer::CleanUp() {
-	mVisual.sprite->texture->Destroy();
+	mVisual.texture.Destroy();
 }
 DEFINE_OBJECT(oPlayerExt, oPlayer);
 
