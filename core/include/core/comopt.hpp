@@ -24,6 +24,6 @@ enum CO_C_BASE_ENUM : unsigned char {
 
 #pragma endregion
 
-#define CO_PACKED_FILES 1
+#define CO_PACKED_FILES 0
 
 #endif

@@ -1,6 +1,11 @@
 #ifndef NDEBUG
 #pragma once
 
+#include <core/comopt.hpp>
+
+#if CO_PACKED_FILES
+#else
+
 #include <core/comp/renderer.hpp>
 #include <core/comp/input.hpp>
 #include <magea/world.hpp>
@@ -472,4 +477,6 @@ namespace Developer {
 DEFINE_TOOL(DevToolEditor, Developer::tEditor)
 
 
-#endif
+#endif //CO_PACKED_FILES
+
+#endif //NDEBUG

@@ -12,6 +12,9 @@
 COMPONENT_DEFINE_START(useRender, Render, true)
 constexpr bool sUseHA = true;
 
+constexpr u32 WINDOW_WIDTH = 960;
+constexpr u32 WINDOW_HEIGHT = 540;
+
 struct Color {
 	u8 r = 0, g = 0, b = 0;
 	operator SDL_Color() {

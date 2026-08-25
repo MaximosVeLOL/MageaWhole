@@ -50,7 +50,7 @@ namespace Render {
 
 	COMPONENT_DEFINE_INIT {
 		if (!SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) return false;
-		gWindow = SDL_CreateWindow("Application", 960, 540, SDL_WINDOW_RESIZABLE);
+		gWindow = SDL_CreateWindow("Application", WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE);
 		if (!gWindow)
 			return false;
 		
@@ -60,8 +60,14 @@ namespace Render {
 				return false;
 		}
 		//gRenderThing = (sUseHA ? (void*)SDL_CreateRenderer(w, NULL) : w); //If anything other than NULL is used, it crashes
-		
+#if CO_PACKED_FILES
+		FileSystem::Packed::Node* n = FileSystem::Packed::gRoot->GetNode("texture/font_debug.png");
+		if (!n) throw("Failed to get debug font!");
+		FileSystem::Packed::ND_File* font = n->AsFile();
+		SDL_Surface* s = SDL_LoadPNG_IO(SDL_IOFromMem(font->data, font->size), true);
+#else
 		SDL_Surface* s = SDL_LoadPNG(FileSystem::GetStringAsAsset("texture/font_debug.png"));
+#endif
 		if (s) {
 			if (sUseHA) {
 				gFont.mTexture = SDL_CreateTextureFromSurface(GetRender(), s);

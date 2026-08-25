@@ -18,7 +18,7 @@ dev_tools_toggle (T)
 }
 
 axis {
-hortizontal (right, left)
+horizontal (right, left)
 vertical (down, up)
 
 dev_e_horizontal (dev_e_right, dev_e_left)

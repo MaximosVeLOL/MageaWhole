@@ -30,6 +30,8 @@ namespace MGUI {
 
 		void UpdateAndRender();
 
+		void UpdateAlignment(RRect pOffset);
+
 		//Destroys all the widgets, and other neccessary information
 		void Destroy();
 	};
@@ -47,6 +49,8 @@ namespace MGUI {
 	MGUI_API void PostCall();
 
 	MGUI_API void SetPostCallEvent(void(*pEvent)());
+
+	MGUI_API void UpdateAlignment(RRect pOffset);
 }
 
 

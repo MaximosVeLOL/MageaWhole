@@ -30,4 +30,10 @@ struct GUIStyle {
 	u8 id = 0;
 };
 
+//Alignment used for screen-resizing stuff
+struct Alignment {
+	u8 x : 4;
+	u8 y : 4;
+};
+
 #endif

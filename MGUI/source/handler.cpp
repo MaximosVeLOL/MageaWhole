@@ -94,6 +94,13 @@ namespace MGUI {
 		prevMouseState = Input::gMouseState.state;
 	}
 
+	//The offset from the previous alignment, so 960x540 to 1920x1080 is 0 + (1920/2)
+	void Screen::UpdateAlignment(RRect pOffset) {
+		for (u8 i = 0; i < mWidgetCount;i++) {
+			mWidgets[i]->Align(pOffset);
+		}
+	}
+
 	void Screen::Destroy() {
 		delete[] mWidgetNames;
 		delete[] mWidgets;
@@ -158,5 +165,11 @@ namespace MGUI {
 
 	void SetPostCallEvent(void(*pEvent)()) {
 		gPostCallEvent = pEvent;
+	}
+
+	void UpdateAlignment(RRect pOffset) {
+		for (u8 i = 0; i < gScreenCount;i++) {
+			gScreens[i]->UpdateAlignment(pOffset);
+		}
 	}
 }

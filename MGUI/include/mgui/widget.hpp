@@ -16,6 +16,7 @@ namespace MGUI {
 		Screen* mParent = nullptr;
 		u8 mID = 0; //Our index in the screen, IDK why we need this
 	public:
+		Alignment mAlignment = { A_TOP, A_LEFT };
 		u8 mWidgetParent = PARENT_NONE; //The parent of the widget we are attached to.
 
 		bool uGetMouseHoverBefore();
@@ -70,6 +71,15 @@ namespace MGUI {
 
 		//When the widget gets destroyed
 		virtual void CleanUp() {}
+
+		virtual void OnAlign(RRect pOffset) {
+			mRect.x + pOffset.x;
+			mRect.y + pOffset.y;
+		}
+
+		void Align(RRect pOffset) {
+			OnAlign(pOffset);
+		}
 
 		void Render() {
 			if (!mVisible) return;
