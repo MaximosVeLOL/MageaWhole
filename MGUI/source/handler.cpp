@@ -26,6 +26,7 @@ namespace MGUI {
 			pWidget->mWidgetParent = pWidgetParentID;
 		}
 		mWidgets[mWidgetCount++] = pWidget;
+		pWidget->PreCache();
 		return mWidgetCount - 1;
 	}
 
@@ -39,7 +40,7 @@ namespace MGUI {
 	}
 
 	void Screen::UpdateAndRender() {
-		Render::Clear();
+		//Render::Clear();
 		static u8 prevMouseState = 0;
 		mMouseOverWidget = false;
 		for (u8 i = 0; i < mWidgetCount;i++) {

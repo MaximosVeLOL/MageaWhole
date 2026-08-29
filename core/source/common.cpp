@@ -11,18 +11,22 @@ void Log(const char* pFormat, ...) {
 }
 
 char* format(const char* pFormat, ...) {
-
+	if (!pFormat) {
+		_failure:
+		Log("Failed to format printed string!");
+		char* bruh = new char[SDL_strlen("formatted string") + 1];
+		SDL_strlcpy(bruh, "formatted string", SDL_strlen("formatted string") + 1);
+		return bruh;
+	}
+	
 	va_list args;
 	va_start(args, pFormat);
 	char* ret = new char[256];
 	
 	if (vsnprintf(ret, 256, pFormat, args) < 0) {
 		delete[] ret;
-		Log("Failed to format printed string!");
-		char* bruh = new char[SDL_strlen("formatted string") + 1];
-		SDL_strlcpy(bruh, "formatted string", SDL_strlen("formatted string") + 1);
 		va_end(args);
-		return bruh;
+		goto _failure;
 	}
 	//perror(ret);
 	va_end(args);

@@ -15,7 +15,7 @@ namespace MGUI {
 	private:
 		Screen* mParent = nullptr;
 		u8 mID = 0; //Our index in the screen, IDK why we need this
-	public:
+	protected:
 		Alignment mAlignment = { A_TOP, A_LEFT };
 		u8 mWidgetParent = PARENT_NONE; //The parent of the widget we are attached to.
 
@@ -27,15 +27,7 @@ namespace MGUI {
 		s16 uDrawText(vector pOffset, const char* pFormat, ...);
 
 		void uDrawRect(RRect pOffset, Render::Color);
-		void uDrawFillRect(RRect pOffset, GUIStyle pStyle);
-
-		Widget* uFindWidget(const char* pName);
-
-		template<typename T>
-		inline T* GetAs() { return reinterpret_cast<T*>(this); }
-
-		//Editable things
-		GUIStyle mBackground{false, 1}; //Widget background color ID!
+		void uDrawFillRect(RRect pOffset, GUIStyle pStyle, bool pOutline = false);
 
 		RRect mRect{ 0 };
 
@@ -44,6 +36,16 @@ namespace MGUI {
 
 		//Widget settings
 		bool m_sDoHoveringColors = true;
+
+	public:
+
+		Widget* uFindWidget(const char* pName);
+
+		template<typename T>
+		inline T* GetAs() { return reinterpret_cast<T*>(this); }
+
+		//Editable things
+		GUIStyle mBackground{false, 1}; //Widget background color ID!
 
 		virtual void PreCache(){}
 

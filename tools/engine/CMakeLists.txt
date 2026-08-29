@@ -12,4 +12,4 @@ add_library(MageaDevTools SHARED
 )
 target_include_directories(MageaDevTools PRIVATE include)
 
-target_link_libraries(MageaDevTools PRIVATE core MGUI Magea SDL3::SDL3)
+target_link_libraries(MageaDevTools PRIVATE core MGUI Magea SDL3::SDL3 angelscript)

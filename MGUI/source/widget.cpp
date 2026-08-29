@@ -28,11 +28,24 @@ namespace MGUI {
 		return Render::Text({ static_cast<s16>(mRect.x + pOffset.x), static_cast<s16>(mRect.y + pOffset.y) }, pFormat);
 	}
 
+
 	void Widget::uDrawRect(RRect pOffset, Render::Color pColor) {
 		Render::Rect({ static_cast<s16>(mRect.x + pOffset.x), static_cast<s16>(mRect.y + pOffset.y), pOffset.width, pOffset.height }, pColor);
 	}
-	void Widget::uDrawFillRect(RRect pOffset, GUIStyle pStyle) {
-		RRect r = { static_cast<s16>(mRect.x + pOffset.x), static_cast<s16>(mRect.y + pOffset.y), pOffset.width, pOffset.height };
+	void Widget::uDrawFillRect(RRect pOffset, GUIStyle pStyle, bool pOutline) {
+		
+		RRect r = { static_cast<s16>(mRect.x + pOffset.x + 1), static_cast<s16>(mRect.y + pOffset.y + 1), pOffset.width - 2, pOffset.height - 2 };
+		if (pOutline) {
+			//RRect rOg = { static_cast<s16>(mRect.x + pOffset.x), static_cast<s16>(mRect.y + pOffset.y), pOffset.width, pOffset.height };
+			Render::Rect(r, Style::GetColorByID(Style::C_W_OUTLINE));
+			r.x++;
+			r.y++;
+			r.width -= 2;
+			r.height -= 2;
+		}
+		if (pOutline) {
+
+		}
 		if (pStyle.isTexture) {
 			Render::Texture(Style::GetTextureByID((Style::TextureID)mBackground.id), r);
 			return;

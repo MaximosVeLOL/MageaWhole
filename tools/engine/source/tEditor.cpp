@@ -24,6 +24,8 @@ using namespace MGUI;
 
 #include <api.hpp>
 
+#include <magea/tileset.hpp>
+
 namespace Developer {
 
 	struct Definition {
@@ -38,6 +40,7 @@ namespace Developer {
 
 	void mguiMainButtonResetObjectsClicked();
 	void mguiMainButtonResetCollisionClicked();
+	void mguiMainButtonResetTilesClicked();
 
 	void mguiMainEnumModeOnSelect(u8, u8);
 
@@ -48,6 +51,9 @@ namespace Developer {
 	void mguiMainEnumObjectOnSelect(u8, u8);
 
 	void exportWSFilePrompt(void* userdata, const char* const* filelist, int filter);
+
+
+	void mguiMainNumTileIndOnIncrement(u8 pValue);
 
 	class tEditor : public Tool {
 	public:
@@ -88,6 +94,28 @@ namespace Developer {
 
 			}
 		} mModeCollision;
+
+		u8 width = 30;
+		u8 height = 15;
+
+		struct {
+			Tileset sets[3]{ 0 };
+			//The selected tileset
+			u8 index = 0;
+			u8** tileData = nullptr;
+			//The index of the tile in the tileset
+			u8 tileIndex = 0;
+			void reset() {
+				
+			}
+		} mModeTile;
+
+		void setTileData() {
+			mModeTile.tileData = new u8*[width]{ nullptr };
+			for (u8 i = 0; i < width;i++) {
+				mModeTile.tileData[i] = new u8[height]{0};
+			}
+		}
 
 		void OnLoad() override {
 			//mScreenMain = new MGUI::Screen();
@@ -159,16 +187,22 @@ namespace Developer {
 			mScreenMain->AddWidget(new wLabel({ 20, 20, 0, 0 }, "Editor Mode"));
 			const char* modeStrings[] = {
 				"Object Placement",
-				"Collision Placement"
+				"Collision Placement",
+				"Tile Placement"
 			};
-			mScreenMain->AddWidget(new wEnum({ 20, 40, 100, 20 }, modeStrings, 2, 20, mguiMainEnumModeOnSelect));
+			constexpr u8 modeStringAmount = 3;
+			mScreenMain->AddWidget(new wEnum({ 20, 40, 100, 20 }, modeStrings, modeStringAmount, 20, mguiMainEnumModeOnSelect));
 
-			mScreenMain->AddWidget(new wButton(RRect{ 20, 100, 100, 20 }, mguiMainButtonResetObjectsClicked, "Reset Objects"));
-			mScreenMain->AddWidget(new wButton(RRect{ 20, 120, 100, 20 }, mguiMainButtonResetCollisionClicked, "Reset Collision"));
-			mScreenMain->AddWidget(new wButton(RRect{ 20, 140, 100, 20 }, mguiMainButtonTestClicked, "Test in-game"));
+			constexpr s16 offsetR = 60 + (20 * modeStringAmount);
+
+			mScreenMain->AddWidget(new wButton(RRect{ 20, offsetR, 100, 20 }, mguiMainButtonResetObjectsClicked, "Reset Objects"));
+			mScreenMain->AddWidget(new wButton(RRect{ 20, offsetR + 20, 100, 20 }, mguiMainButtonResetCollisionClicked, "Reset Collision"));
+			mScreenMain->AddWidget(new wButton(RRect{ 20, offsetR + 40, 100, 20 }, mguiMainButtonResetTilesClicked, "Reset Current tileset"));
+			//mScreenMain->AddWidget(new wButton(RRect{ 20, 140, 100, 20 }, mguiMainButtonTestClicked, "Test in-game"));
 			
-			constexpr u16 offsetO = 200;
-			constexpr u16 offsetC = 400;
+			constexpr u16 offsetO = offsetR + (20 * 4);
+			constexpr u16 offsetC = offsetO + (20 * 6);
+			constexpr u16 offsetT = offsetC + (20 * 3);
 
 			mScreenMain->AddWidget(new wLabel({ 20, offsetO, 0, 0 }, "Object Section"));
 			mScreenMain->AddWidget(new wLabel({ 20, offsetO + 20, 0, 0 }, "Current Object"));
@@ -191,11 +225,26 @@ namespace Developer {
 				"Slope",
 			};
 			mScreenMain->AddWidget(new wEnum({ 20, static_cast<s16>(offsetC + 40), 100, 20 }, shapeStrings, 2, 20, mguiMainEnumShapeTypeOnSelect));
+
+			mScreenMain->AddWidget(new wNumber<u8>({ 20, static_cast<s16>(offsetT), 100, 20 }, 0, 2, mguiMainNumTileIndOnIncrement));
+
+			setTileData();
+			mModeTile.sets[0].used = true;
+			Asset::Request((void**) & mModeTile.sets[0], "texture/tileset.tl", Asset::AL_Tileset);
+			Asset::Request((void**) & mModeTile.sets[0].texture.mTexture, "texture/tileset.png", Asset::AL_Texture);
 		}
 
 		void Update() override {
 			Render::FillRect({ static_cast<s16>(300 + mCameraPos.x), static_cast<s16>(300 + mCameraPos.y), 10000, 10000}, {0, 0, 0, 255});
-			Render::FillRect({ static_cast<s16>(-mCameraPos.x), static_cast<s16>(-mCameraPos.y), 7000, 7000}, {255, 255, 255, 255});
+			Render::FillRect({ static_cast<s16>(-mCameraPos.x), static_cast<s16>(mCameraPos.y), 7000, 7000}, {255, 255, 255, 255});
+			s16 i = 0;
+			Render::SetColor({ 144, 144, 144, 144 });
+			for (; i < Render::WINDOW_WIDTH;i += World::GRID_SIZE) {
+				Render::Rect({static_cast<s16>(i + (mCameraPos.x % World::GRID_SIZE)), 0, 1, Render::WINDOW_HEIGHT });
+			}
+			for (i = 0; i < Render::WINDOW_HEIGHT;i += World::GRID_SIZE) {
+				Render::Rect({ 0, static_cast<s16>(i + (mCameraPos.y % World::GRID_SIZE)), Render::WINDOW_WIDTH, 1 });
+			}
 			mScreenMain->UpdateAndRender();
 			static u8 prevMouseState = 0;
 			Definition& d = mDefs[mModeObject.curDef];
@@ -205,6 +254,8 @@ namespace Developer {
 
 			mCameraPos.x += Input::GetAxisState("dev_e_horizontal") * 10;
 			mCameraPos.y += Input::GetAxisState("dev_e_vertical") * 10;
+
+			Render::Text({ 860, 20 }, "(%d, %d)", (int)mCameraPos.x, (int)mCameraPos.y);
 
 
 			if (Input::GetBindingWentDown("dev_e_export")) {
@@ -217,6 +268,7 @@ namespace Developer {
 			else if (Input::GetBindingWentDown("dev_e_import")) {
 				uImportWS();
 			}
+			
 
 			if (!mScreenMain->mMouseOverWidget) {
 				switch (mMode) {
@@ -326,6 +378,21 @@ namespace Developer {
 					}
 
 				} break;
+
+				case 2: {
+					Tileset& t = mModeTile.sets[mModeTile.index];
+					
+					Render::Texture(&t.texture, RRect{ 660, 240, static_cast<u16>(t.width * World::GRID_SIZE), static_cast<u16>(t.height * World::GRID_SIZE) });
+					if (Input::gMouseState.state == SDL_BUTTON_LEFT) {
+						u8 x = Grid<u8, u16>(Input::gMouseState.x, World::GRID_SIZE);
+						u8 y = Grid<u8, u16>(Input::gMouseState.y, World::GRID_SIZE);
+						if (x < 0 || x > width || y < 0 || y > height) return;
+						mModeTile.tileData[x][y] = mModeTile.tileIndex;
+						//u8 ind = t.GetIndexFromPosition(, Grid<u8, u16>(Input::gMouseState.x, World::GRID_SIZE));
+					
+					}
+				} break;
+
 				}
 
 			}
@@ -343,7 +410,13 @@ namespace Developer {
 			for (u8 i = 0; i < mModeCollision.count;i++) {
 				RRect& r = mModeCollision.rects[i];
 				Render::Text({ static_cast<s16>(r.x - mCameraPos.x), static_cast<s16>((r.y + 8) - mCameraPos.y) }, "(%hu, %hu, %hu, %hu, %hu, %hu)", r.x, r.y, r.width, r.height, 0, i);
-
+			}
+			Tileset& t = mModeTile.sets[mModeTile.index];
+			for (u8 x = 0; x < width;x++) {
+				for (u8 y = 0; y < height;y++) {
+					RRect part = t.GetRectPartFromPosition(x, y);
+					Render::Texture(&t.texture, { static_cast<s16>((x * World::GRID_SIZE) - mCameraPos.x), static_cast<s16>((y * World::GRID_SIZE) - mCameraPos.y), World::GRID_SIZE, World::GRID_SIZE }, part);
+				}
 			}
 
 			prevMouseState = Input::gMouseState.state;
@@ -444,6 +517,9 @@ namespace Developer {
 	void mguiMainButtonResetCollisionClicked() {
 		GetTool<tEditor>("editor")->mModeCollision.reset();
 	}
+	void mguiMainButtonResetTilesClicked() {
+		GetTool<tEditor>("editor")->mModeTile.reset();
+	}
 
 	void mguiMainEnumModeOnSelect(u8 pPrev, u8 pNext) {
 		GetTool<tEditor>("editor")->mMode = pNext;
@@ -471,6 +547,10 @@ namespace Developer {
 		if (!pOutput.IsOpen())
 			return;
 		GetTool<tEditor>("editor")->uExportWS(pOutput);
+	}
+
+	void mguiMainNumTileIndOnIncrement(u8 pValue) {
+		GetTool<tEditor>("editor")->mModeTile.index = pValue;
 	}
 }
 

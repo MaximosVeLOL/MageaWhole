@@ -389,6 +389,80 @@ namespace FileSystem {
 	void Init() {
 		Packed::OpenPackedFile();
 	}
+
+	void File::Open(const char* pDirectory, const char* pOpenMode, bool pDirectoryIsAsset) {
+		if (SDL_strcmp(pOpenMode, "w") != 0 || !pDirectoryIsAsset) {
+			//throw("Trying to create a file in packed file mode!");
+			Log("(File::Open) Attempting to create a file in packed file mode or use a real directory, using experimental _File_Real method");
+			mFile = (Packed::Node*)(new _File_Real(pDirectory, pOpenMode, pDirectoryIsAsset));
+			mPosition = USE_REALFILE;
+		}
+		mFile = Packed::gRoot->GetNode(pDirectory);
+		if (mFile->type != Packed::NODE_FILE) {
+			throw("Opened node is not a file!");
+		}
+		mInfo = mFile->AsFile();
+	}
+
+	template<typename T>
+	T File::Read() {
+		if (UsingReal()) {
+			return GetFile()->Read<T>();
+		}
+		void* ret = (mInfo->data + mPosition);
+		mPosition += sizeof(T);
+		return *static_cast<T*>(ret);
+	}
+
+	void* File::Read(u32 pAmount) {
+		if (UsingReal()) {
+			return GetFile()->Read(pAmount);
+		}
+		void* ret = (mInfo->data + mPosition);
+
+		//Copy the data so that we don't corrupt the read only data
+		u8* realRet = new u8[pAmount]{ 0x0A };
+		SDL_memcpy(realRet, ret, pAmount);
+
+		mPosition += pAmount;
+		return ret;
+	}
+
+	template<typename T>
+	void File::Write(T pData) {
+		GetFile()->Write<T>(pData);
+		//throw("Trying to write whilst in packed file mode!");
+	}
+
+	void File::Write(void* pData, u32 pAmount) {
+		GetFile()->Write(pData, pAmount);
+		//throw("Trying to write whilst in packed file mode!");
+	}
+
+	void File::Seek(u32 pOffset, SDL_IOWhence pWhence) {
+		switch (pWhence) {
+		case SDL_IO_SEEK_SET:
+			mPosition = pOffset;
+			break;
+
+		case SDL_IO_SEEK_CUR:
+			mPosition += pOffset;
+			break;
+
+		case SDL_IO_SEEK_END:
+			mPosition = mInfo->size - pOffset;
+			break;
+		}
+	}
+
+	u32 File::Tell() {
+		return mPosition;
+	}
+
+	bool File::IsOpen() {
+		return (mFile);
+	}
+
 #endif
 
 }

@@ -88,81 +88,43 @@ namespace FileSystem {
 	CORE_EXPORT char* GetDirectoryBaseDirectory(const char* pDirectory, bool pDirectoryIsAsset = true);
 	
 #if CO_PACKED_FILES
-	struct File {
+
+
+	struct CORE_API File {
+	private:
+		const static u32 USE_REALFILE = 65535;
+		bool UsingReal() {
+			return (mPosition == USE_REALFILE);
+		}
+		_File_Real* GetFile() {
+			return (_File_Real*)(mFile);
+		}
+	public:
 		Packed::Node* mFile = nullptr;
-		Packed::ND_File* mInfo;
+		Packed::ND_File* mInfo = nullptr;
 
 		u32 mPosition = 0;
 
-		void Open(const char* pDirectory, const char* pOpenMode = "r", bool pDirectoryIsAsset = true) {
-			if (SDL_strcmp(pOpenMode, "r") != 0) {
-				throw("Trying to create a file in packed file mode!");
-			}
-			if (!pDirectoryIsAsset) {
-				throw("Trying to open an actual file in packed file mode!");
-			}
-			mFile = Packed::gRoot->GetNode(pDirectory);
-			if (mFile->type != Packed::NODE_FILE) {
-				throw("Opened node is not a file!");
-			}
-			mInfo = mFile->AsFile();
-		}
+		void Open(const char* pDirectory, const char* pOpenMode = "r", bool pDirectoryIsAsset = true);
 
 		template<typename T>
-		T Read() {
-			void* ret = (mInfo->data + mPosition);
-			mPosition += sizeof(T);
-			return *static_cast<T*>(ret);
-		}
+		T Read();
 
-		void* Read(u32 pAmount) {
-			void* ret = (mInfo->data + mPosition);
-
-			//Copy the data so that we don't corrupt the read only data
-			u8* realRet = new u8[pAmount]{ 0x0A };
-			SDL_memcpy(realRet, ret, pAmount);
-
-			mPosition += pAmount;
-			return ret;
-		}
+		void* Read(u32 pAmount);
 
 		template<typename T>
-		void Write(T pData) {
-			throw("Trying to write whilst in packed file mode!");
-		}
+		void Write(T pData);
 
-		void Write(void* pData, u32 pAmount) {
-			throw("Trying to write whilst in packed file mode!");
-		}
+		void Write(void* pData, u32 pAmount);
 
-		void Seek(u32 pOffset, SDL_IOWhence pWhence) {
-			switch (pWhence) {
-			case SDL_IO_SEEK_SET:
-				mPosition = pOffset;
-				break;
+		void Seek(u32 pOffset, SDL_IOWhence pWhence);
 
-			case SDL_IO_SEEK_CUR:
-				mPosition += pOffset;
-				break;
+		u32 Tell();
 
-			case SDL_IO_SEEK_END:
-				mPosition = mInfo->size - pOffset;
-				break;
-			}
-		}
-
-		u32 Tell() {
-			return mPosition;
-		}
-
-		bool IsOpen() {
-			return (mFile);
-		}
+		bool IsOpen();
 
 		//Do nothing, as all the data is supposed to be loaded in memory
-		void Close() {
-
-		}
+		void Close() {}
 
 		File() {}
 		File(const char* pDirectory, const char* pMode = "r", bool pDirectoryIsAsset = true) {

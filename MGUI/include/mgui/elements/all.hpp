@@ -7,4 +7,5 @@
 #include <mgui/elements/wTextInput.hpp>
 #include <mgui/elements/wScrollbar.hpp>
 #include <mgui/elements/wTexture.hpp>
+#include <mgui/elements/wNumber.hpp>
 #endif
