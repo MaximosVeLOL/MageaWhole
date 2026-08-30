@@ -13,7 +13,7 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char* argv[]) {
 	}
 	SDL_free(memTest);
 
-	unsigned char result = Engine::Init();
+	unsigned char result = Engine::Init(argc, argv);
 	return (result == 0 ? SDL_APP_CONTINUE : SDL_APP_FAILURE);
 }
 

@@ -14,6 +14,7 @@ dev_e_import (I)
 dev_e_export (O)
 
 dev_tools_toggle (T)
+dev_restart (R)
 
 }
 

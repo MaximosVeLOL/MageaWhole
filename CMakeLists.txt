@@ -12,15 +12,20 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MDd /ZI /Ob0 /Od /RTC1")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
+#Vendored projects go here
+
 add_subdirectory(vendored/SDL EXCLUDE_FROM_ALL)
 add_subdirectory(vendored/SDL_mixer EXCLUDE_FROM_ALL)
 set(SDL_INSTALL OFF CACHE BOOL "" FORCE) 
 
+add_subdirectory(vendored/angelscript/angelscript/projects/cmake)
+add_subdirectory(vendored/miniz)
+
+#My projects go here
 add_subdirectory(core)
 add_subdirectory(MGUI)
 add_subdirectory(Magea)
 add_subdirectory(Game)
-add_subdirectory(vendored/angelscript/angelscript/projects/cmake)
 set(DEBUG true)
 if(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
     set(DEBUG false)
