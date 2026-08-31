@@ -32,16 +32,20 @@ char* format(const char* pFormat, ...) {
 	va_end(args);
 	ret = (char*)SDL_realloc(ret, SDL_strlen(ret) + 1);
 	return ret;
-
-	return nullptr; //Should never happen
 }
 
 void DisplayError(const char* pFormat, ...) {
-	SDL_Log("(DisplayError) Going to show a messagebox with message (%s)", format(pFormat));
-	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "An error has occured!", format(pFormat), NULL);
+	char* message = format(pFormat);
+	SDL_Log("(DisplayError) Going to show a messagebox with message (%s)", message);
+	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "An error has occured!", message, NULL);
+	delete[] message;
 }
 
 string_size_t Strlen(const char* pString) {
+	if (!pString) {
+		Log("Invalid string");
+		return 0xFFFF;
+	}
 	string_size_t ret = 0;
 	while (pString[ret++]);
 	return ret;

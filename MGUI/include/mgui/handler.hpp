@@ -15,6 +15,8 @@ namespace MGUI {
 
 	class MGUI_API Screen {
 	public:
+		bool active = true;
+		u8 id = PARENT_NONE;
 		Widget** mWidgets = nullptr;
 		//Names for each widget id
 		char** mWidgetNames = nullptr;
@@ -38,7 +40,7 @@ namespace MGUI {
 
 	MGUI_API void Init();
 
-	MGUI_API void AddScreen(Screen* pScreen);
+	MGUI_API u8 AddScreen(Screen* pScreen);
 
 	MGUI_API void UpdateAndRender();
 
@@ -51,6 +53,9 @@ namespace MGUI {
 	MGUI_API void SetPostCallEvent(void(*pEvent)());
 
 	MGUI_API void UpdateAlignment(RRect pOffset);
+
+	MGUI_API extern Screen** gScreens;
+	MGUI_API extern u8 gScreenCount;
 }
 
 

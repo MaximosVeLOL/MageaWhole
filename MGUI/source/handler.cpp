@@ -40,6 +40,7 @@ namespace MGUI {
 	}
 
 	void Screen::UpdateAndRender() {
+		if (!active) return;
 		//Render::Clear();
 		static u8 prevMouseState = 0;
 		mMouseOverWidget = false;
@@ -128,12 +129,14 @@ namespace MGUI {
 		//32 * 8
 	}
 
-	void AddScreen(Screen* pScreen) {
+	u8 AddScreen(Screen* pScreen) {
 		if (gScreenCount + 1 >= SCREEN_MAX) {
 			Log("(MGUI::AddScreen) Screen count exceeded!");
-			return;
+			return PARENT_NONE;
 		}
-		gScreens[gScreenCount++] = pScreen;
+		gScreens[gScreenCount] = pScreen;
+		pScreen->id = gScreenCount;
+		return gScreenCount++;
 	}
 
 	void UpdateAndRender() {
