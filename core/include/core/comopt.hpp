@@ -24,7 +24,7 @@ enum CO_C_BASE_ENUM : unsigned char {
 
 #pragma endregion
 
-#define CO_PACKED_FILES 0
+#define CO_PACKED_FILES 1
 
 //Do we use dll files for the game or angelscript for game stuff?
 #define CO_G_SCRIPTING 0

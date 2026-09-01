@@ -2,12 +2,16 @@
 	"InstallScripts" : 
 	[
 		"C:/source/MageaWhole/build/cmake_install.cmake",
+		"C:/source/MageaWhole/build/vendored/SDL/cmake_install.cmake",
+		"C:/source/MageaWhole/build/vendored/SDL_mixer/cmake_install.cmake",
+		"C:/source/MageaWhole/build/vendored/miniz/cmake_install.cmake",
 		"C:/source/MageaWhole/build/core/cmake_install.cmake",
 		"C:/source/MageaWhole/build/MGUI/cmake_install.cmake",
 		"C:/source/MageaWhole/build/Magea/cmake_install.cmake",
 		"C:/source/MageaWhole/build/Game/cmake_install.cmake",
-		"C:/source/MageaWhole/build/vendored/SDL/cmake_install.cmake",
-		"C:/source/MageaWhole/build/vendored/SDL_mixer/cmake_install.cmake"
+		"C:/source/MageaWhole/build/tools/cmake_install.cmake",
+		"C:/source/MageaWhole/build/tools/engine/cmake_install.cmake",
+		"C:/source/MageaWhole/build/tools/utility/pac/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

@@ -37,7 +37,7 @@ struct AlignMode {
 #define A_BOTTOM 0x02 //	V
 
 //For the text
-CORE_API extern AlignMode gAlignMode;
+CORE_EXPORT AlignMode gAlignMode;
 
 //Needed by both versions
 //SDL_Window* gWindow = nullptr;

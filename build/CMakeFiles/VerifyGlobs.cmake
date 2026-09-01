@@ -188,58 +188,6 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/audio/directsound/*.c")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/audio/directsound/SDL_directsound.c"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/audio/directsound/*.h")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/audio/directsound/SDL_directsound.h"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/audio/disk/*.c")
 set(OLD_GLOB
   "C:/source/MageaWhole/vendored/SDL/src/audio/disk/SDL_diskaudio.c"
@@ -344,9 +292,9 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/audio/wasapi/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/audio/emscripten/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/audio/wasapi/SDL_wasapi.c"
+  "C:/source/MageaWhole/vendored/SDL/src/audio/emscripten/SDL_emscriptenaudio.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -370,9 +318,9 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/audio/wasapi/*.h")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/audio/emscripten/*.h")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/audio/wasapi/SDL_wasapi.h"
+  "C:/source/MageaWhole/vendored/SDL/src/audio/emscripten/SDL_emscriptenaudio.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -500,9 +448,34 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/camera/mediafoundation/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/camera/emscripten/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/camera/mediafoundation/SDL_camera_mediafoundation.c"
+  "C:/source/MageaWhole/vendored/SDL/src/camera/emscripten/SDL_camera_emscripten.c"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/camera/emscripten/*.h")
+set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -555,122 +528,6 @@ endif()
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/core/*.h")
 set(OLD_GLOB
   "C:/source/MageaWhole/vendored/SDL/src/core/SDL_core_unsupported.h"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/core/windows/*.c")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_hid.c"
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_immdevice.c"
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_windows.c"
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_xinput.c"
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/pch.c"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/core/windows/*.cpp")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_gameinput.cpp"
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/pch_cpp.cpp"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/core/windows/*.h")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_directx.h"
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_gameinput.h"
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_hid.h"
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_immdevice.h"
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_windows.h"
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/SDL_xinput.h"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# shared_sources at vendored/SDL/cmake/sdlcommands.cmake:23 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/core/windows/*.rc")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/core/windows/version.rc"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -943,10 +800,34 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/filesystem/windows/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/filesystem/emscripten/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/filesystem/windows/SDL_sysfilesystem.c"
-  "C:/source/MageaWhole/vendored/SDL/src/filesystem/windows/SDL_sysfsops.c"
+  "C:/source/MageaWhole/vendored/SDL/src/filesystem/emscripten/SDL_sysfilesystem.c"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/filesystem/emscripten/*.h")
+set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -999,110 +880,6 @@ endif()
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/gpu/*.h")
 set(OLD_GLOB
   "C:/source/MageaWhole/vendored/SDL/src/gpu/SDL_sysgpu.h"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/gpu/d3d12/*.c")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/gpu/d3d12/SDL_gpu_d3d12.c"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/gpu/d3d12/*.h")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/gpu/d3d12/D3D12_Blit.h"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/gpu/vulkan/*.c")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/gpu/vulkan/SDL_gpu_vulkan.c"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/gpu/vulkan/*.h")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/gpu/vulkan/SDL_gpu_vulkan_vkfuncs.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -1179,10 +956,9 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/haptic/hidapi/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/haptic/dummy/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/haptic/hidapi/SDL_hidapihaptic.c"
-  "C:/source/MageaWhole/vendored/SDL/src/haptic/hidapi/SDL_hidapihaptic_lg4ff.c"
+  "C:/source/MageaWhole/vendored/SDL/src/haptic/dummy/SDL_syshaptic.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -1206,37 +982,8 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/haptic/windows/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/haptic/dummy/*.h")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/haptic/windows/SDL_dinputhaptic.c"
-  "C:/source/MageaWhole/vendored/SDL/src/haptic/windows/SDL_windowshaptic.c"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/haptic/windows/*.h")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/haptic/windows/SDL_dinputhaptic_c.h"
-  "C:/source/MageaWhole/vendored/SDL/src/haptic/windows/SDL_windowshaptic_c.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -1426,32 +1173,6 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/io/windows/*.c")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/io/windows/SDL_asyncio_windows_ioring.c"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/joystick/*.c")
 set(OLD_GLOB
   "C:/source/MageaWhole/vendored/SDL/src/joystick/SDL_gamepad.c"
@@ -1514,35 +1235,35 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/joystick/emscripten/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_8bitdo.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_combined.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_flydigi.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_gamecube.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_gip.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_lg4ff.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_luna.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_ps3.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_ps4.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_ps5.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_rumble.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_shield.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_sinput.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_stadia.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_steam.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_steam_hori.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_steam_triton.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_steamdeck.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_switch.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_switch2.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_wii.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_xbox360.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_xbox360w.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_xboxone.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapi_zuiki.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_hidapijoystick.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/hidapi/SDL_report_descriptor.c"
+  "C:/source/MageaWhole/vendored/SDL/src/joystick/emscripten/SDL_sysjoystick.c"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/joystick/emscripten/*.h")
+set(OLD_GLOB
+  "C:/source/MageaWhole/vendored/SDL/src/joystick/emscripten/SDL_sysjoystick_c.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -1618,13 +1339,9 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/loadso/dlopen/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/SDL_dinputjoystick.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/SDL_rawinputjoystick.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/SDL_windows_gaming_input.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/SDL_windowsjoystick.c"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/SDL_xinputjoystick.c"
+  "C:/source/MageaWhole/vendored/SDL/src/loadso/dlopen/SDL_sysloadso.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -1648,38 +1365,8 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/*.h")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/loadso/dlopen/*.h")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/SDL_dinputjoystick_c.h"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/SDL_rawinputjoystick_c.h"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/SDL_windowsjoystick_c.h"
-  "C:/source/MageaWhole/vendored/SDL/src/joystick/windows/SDL_xinputjoystick_c.h"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/loadso/windows/*.c")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/loadso/windows/SDL_sysloadso.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -1755,9 +1442,34 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/locale/windows/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/locale/emscripten/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/locale/windows/SDL_syslocale.c"
+  "C:/source/MageaWhole/vendored/SDL/src/locale/emscripten/SDL_syslocale.c"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/locale/emscripten/*.h")
+set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -1834,9 +1546,10 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/main/generic/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/main/emscripten/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/main/generic/SDL_sysmain_callbacks.c"
+  "C:/source/MageaWhole/vendored/SDL/src/main/emscripten/SDL_sysmain_callbacks.c"
+  "C:/source/MageaWhole/vendored/SDL/src/main/emscripten/SDL_sysmain_runapp.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -1860,34 +1573,8 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/main/generic/*.h")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/main/emscripten/*.h")
 set(OLD_GLOB
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/main/windows/*.c")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/main/windows/SDL_sysmain_runapp.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -1965,9 +1652,34 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/misc/windows/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/misc/emscripten/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/misc/windows/SDL_sysurl.c"
+  "C:/source/MageaWhole/vendored/SDL/src/misc/emscripten/SDL_sysurl.c"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/misc/emscripten/*.h")
+set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -2043,9 +1755,9 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/process/windows/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/power/emscripten/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/process/windows/SDL_windowsprocess.c"
+  "C:/source/MageaWhole/vendored/SDL/src/power/emscripten/SDL_syspower.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -2069,8 +1781,34 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/process/windows/*.h")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/power/emscripten/*.h")
 set(OLD_GLOB
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/process/dummy/*.c")
+set(OLD_GLOB
+  "C:/source/MageaWhole/vendored/SDL/src/process/dummy/SDL_dummyprocess.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -2334,9 +2072,9 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/sensor/windows/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/sensor/emscripten/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/sensor/windows/SDL_windowssensor.c"
+  "C:/source/MageaWhole/vendored/SDL/src/sensor/emscripten/SDL_emscriptensensor.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -2360,9 +2098,9 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/sensor/windows/*.h")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/sensor/emscripten/*.h")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/sensor/windows/SDL_windowssensor.h"
+  "C:/source/MageaWhole/vendored/SDL/src/sensor/emscripten/SDL_emscriptensensor.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -2533,35 +2271,8 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/storage/steam/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/storage/generic/*.h")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/storage/steam/SDL_steamstorage.c"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/storage/steam/*.h")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/storage/steam/SDL_steamstorage_proc.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -2638,6 +2349,66 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/thread/generic/*.c")
+set(OLD_GLOB
+  "C:/source/MageaWhole/vendored/SDL/src/thread/generic/SDL_syscond.c"
+  "C:/source/MageaWhole/vendored/SDL/src/thread/generic/SDL_sysmutex.c"
+  "C:/source/MageaWhole/vendored/SDL/src/thread/generic/SDL_sysrwlock.c"
+  "C:/source/MageaWhole/vendored/SDL/src/thread/generic/SDL_syssem.c"
+  "C:/source/MageaWhole/vendored/SDL/src/thread/generic/SDL_systhread.c"
+  "C:/source/MageaWhole/vendored/SDL/src/thread/generic/SDL_systls.c"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/thread/generic/*.h")
+set(OLD_GLOB
+  "C:/source/MageaWhole/vendored/SDL/src/thread/generic/SDL_syscond_c.h"
+  "C:/source/MageaWhole/vendored/SDL/src/thread/generic/SDL_sysmutex_c.h"
+  "C:/source/MageaWhole/vendored/SDL/src/thread/generic/SDL_sysrwlock_c.h"
+  "C:/source/MageaWhole/vendored/SDL/src/thread/generic/SDL_systhread_c.h"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/time/*.c")
 set(OLD_GLOB
   "C:/source/MageaWhole/vendored/SDL/src/time/SDL_time.c"
@@ -2690,9 +2461,34 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/time/windows/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/time/unix/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/time/windows/SDL_systime.c"
+  "C:/source/MageaWhole/vendored/SDL/src/time/unix/SDL_systime.c"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/time/unix/*.h")
+set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -2768,9 +2564,34 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/timer/windows/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/timer/unix/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/timer/windows/SDL_systimer.c"
+  "C:/source/MageaWhole/vendored/SDL/src/timer/unix/SDL_systimer.c"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/timer/unix/*.h")
+set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -2820,9 +2641,9 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/tray/windows/*.c")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/tray/dummy/*.c")
 set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/tray/windows/SDL_tray.c"
+  "C:/source/MageaWhole/vendored/SDL/src/tray/dummy/SDL_tray.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -2995,6 +2816,66 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/*.c")
+set(OLD_GLOB
+  "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/SDL_emscriptenevents.c"
+  "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/SDL_emscriptenframebuffer.c"
+  "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/SDL_emscriptenmouse.c"
+  "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/SDL_emscriptenopengles.c"
+  "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/SDL_emscriptenvideo.c"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/*.h")
+set(OLD_GLOB
+  "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/SDL_emscriptenevents.h"
+  "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/SDL_emscriptenframebuffer.h"
+  "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/SDL_emscriptenmouse.h"
+  "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/SDL_emscriptenopengles.h"
+  "C:/source/MageaWhole/vendored/SDL/src/video/emscripten/SDL_emscriptenvideo.h"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/video/offscreen/*.c")
 set(OLD_GLOB
   "C:/source/MageaWhole/vendored/SDL/src/video/offscreen/SDL_offscreenevents.c"
@@ -3034,113 +2915,6 @@ set(OLD_GLOB
   "C:/source/MageaWhole/vendored/SDL/src/video/offscreen/SDL_offscreenvideo.h"
   "C:/source/MageaWhole/vendored/SDL/src/video/offscreen/SDL_offscreenvulkan.h"
   "C:/source/MageaWhole/vendored/SDL/src/video/offscreen/SDL_offscreenwindow.h"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/video/windows/*.c")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsclipboard.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsevents.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsframebuffer.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowskeyboard.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsmessagebox.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsmodes.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsmouse.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsopengl.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsopengles.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsrawinput.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsshape.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsvideo.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsvulkan.c"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowswindow.c"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/video/windows/*.cpp")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsgameinput.cpp"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "C:/source/MageaWhole/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# both_sources at vendored/SDL/cmake/sdlcommands.cmake:29 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/source/MageaWhole/vendored/SDL/src/video/windows/*.h")
-set(OLD_GLOB
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_msctf.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsclipboard.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsevents.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsframebuffer.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsgameinput.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowskeyboard.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsmessagebox.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsmodes.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsmouse.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsopengl.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsopengles.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsrawinput.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsshape.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsvideo.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowsvulkan.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/SDL_windowswindow.h"
-  "C:/source/MageaWhole/vendored/SDL/src/video/windows/wmmsg.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

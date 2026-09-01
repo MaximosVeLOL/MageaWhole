@@ -25,7 +25,7 @@
 #define CORE_EXPORT
 #endif
 
-#include <stdfloat>
+//#include <stdfloat>
 
 typedef char s8;
 typedef short s16;

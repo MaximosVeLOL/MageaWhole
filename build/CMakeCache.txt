@@ -14,29 +14,26 @@
 # EXTERNAL cache entries
 ########################
 
-//Build the library as a shared library
-BUILD_SHARED_LIBS:BOOL=ON
+ANGELSCRIPT_LIBRARY_NAME:STRING=angelscript
+
+//Disable installation of AngelScript
+AS_DISABLE_INSTALL:BOOL=OFF
+
+//Disable exception handling in script context
+AS_NO_EXCEPTIONS:BOOL=OFF
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=C:/msys64/ucrt64/bin/addr2line.exe
-
-//Path to a program.
-CMAKE_AR:FILEPATH=C:/msys64/ucrt64/bin/ar.exe
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=
 
-//CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=C:/msys64/ucrt64/bin/c++.exe
+//Enable/Disable color output during build.
+CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//A wrapper around 'ar' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_CXX_COMPILER_AR:FILEPATH=C:/msys64/ucrt64/bin/gcc-ar.exe
-
-//A wrapper around 'ranlib' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=C:/msys64/ucrt64/bin/gcc-ranlib.exe
+//No help, variable specified on the command line.
+CMAKE_CROSSCOMPILING_EMULATOR:UNINITIALIZED=C:\source\emsdk/node/24.19.0_64bit/node.exe
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -53,19 +50,8 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//Libraries linked by default with all C++ applications.
-CMAKE_CXX_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-
-//C compiler
-CMAKE_C_COMPILER:FILEPATH=C:/msys64/ucrt64/bin/cc.exe
-
-//A wrapper around 'ar' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_C_COMPILER_AR:FILEPATH=C:/msys64/ucrt64/bin/gcc-ar.exe
-
-//A wrapper around 'ranlib' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_C_COMPILER_RANLIB:FILEPATH=C:/msys64/ucrt64/bin/gcc-ranlib.exe
+//`clang-scan-deps` dependency scanner
+CMAKE_C_COMPILER_CLANG_SCAN_DEPS:FILEPATH=CMAKE_C_COMPILER_CLANG_SCAN_DEPS-NOTFOUND
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -81,9 +67,6 @@ CMAKE_C_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 
 //Flags used by the C compiler during RELWITHDEBINFO builds.
 CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
-
-//Libraries linked by default with all C applications.
-CMAKE_C_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
 
 //Path to a program.
 CMAKE_DLLTOOL:FILEPATH=C:/msys64/ucrt64/bin/dlltool.exe
@@ -103,17 +86,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//Enable/Disable output of build database during the build.
-CMAKE_EXPORT_BUILD_DATABASE:BOOL=
-
-//Enable/Disable output of compile commands during generation.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
-
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=C:/source/MageaWhole/build/CMakeFiles/pkgRedirects
-
-//Convert GNU import libraries to MS format (requires Visual Studio)
-CMAKE_GNUtoMS:BOOL=OFF
 
 //User executables (bin)
 CMAKE_INSTALL_BINDIR:PATH=bin
@@ -152,7 +126,7 @@ CMAKE_INSTALL_MANDIR:PATH=
 CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/Magea
+CMAKE_INSTALL_PREFIX:PATH=C:/source/emsdk/upstream/emscripten/cache/sysroot
 
 //Run-time variable data (LOCALSTATEDIR/run)
 CMAKE_INSTALL_RUNSTATEDIR:PATH=
@@ -169,8 +143,8 @@ CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/msys64/ucrt64/bin/ld.exe
 
-//make program
-CMAKE_MAKE_PROGRAM:FILEPATH=C:/PROGRA~1/MICROS~4/18/COMMUN~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe
+//Path to a program.
+CMAKE_MAKE_PROGRAM:FILEPATH=C:/msys64/ucrt64/bin/mingw32-make.exe
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -193,16 +167,13 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
-CMAKE_NM:FILEPATH=C:/msys64/ucrt64/bin/nm.exe
-
-//Path to a program.
 CMAKE_OBJCOPY:FILEPATH=C:/msys64/ucrt64/bin/objcopy.exe
 
 //Path to a program.
 CMAKE_OBJDUMP:FILEPATH=C:/msys64/ucrt64/bin/objdump.exe
 
 //Build static libraries with -fPIC
-CMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON
+CMAKE_POSITION_INDEPENDENT_CODE:BOOL=OFF
 
 //Value Computed by CMake
 CMAKE_PROJECT_COMPAT_VERSION:STATIC=
@@ -233,27 +204,6 @@ CMAKE_PROJECT_VERSION_PATCH:STATIC=10
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION_TWEAK:STATIC=
-
-//Path to a program.
-CMAKE_RANLIB:FILEPATH=C:/msys64/ucrt64/bin/ranlib.exe
-
-//RC compiler
-CMAKE_RC_COMPILER:FILEPATH=C:/msys64/ucrt64/bin/windres.exe
-
-//Flags for Windows Resource Compiler during all build types.
-CMAKE_RC_FLAGS:STRING=
-
-//Flags for Windows Resource Compiler during DEBUG builds.
-CMAKE_RC_FLAGS_DEBUG:STRING=
-
-//Flags for Windows Resource Compiler during MINSIZEREL builds.
-CMAKE_RC_FLAGS_MINSIZEREL:STRING=
-
-//Flags for Windows Resource Compiler during RELEASE builds.
-CMAKE_RC_FLAGS_RELEASE:STRING=
-
-//Flags for Windows Resource Compiler during RELWITHDEBINFO builds.
-CMAKE_RC_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
 CMAKE_READELF:FILEPATH=C:/msys64/ucrt64/bin/readelf.exe
@@ -311,23 +261,21 @@ CMAKE_STRIP:FILEPATH=C:/msys64/ucrt64/bin/strip.exe
 //Path to a program.
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 
+//No help, variable specified on the command line.
+CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=C:\source\emsdk\upstream\emscripten\cmake\Modules\Platform\Emscripten.cmake
+
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//Value Computed by CMake
-ExternalGame_BINARY_DIR:STATIC=C:/source/MageaWhole/build/Game
+//Force C/C++ compiler
+EMSCRIPTEN_FORCE_COMPILERS:BOOL=ON
 
-//Value Computed by CMake
-ExternalGame_IS_TOP_LEVEL:STATIC=OFF
-
-//Dependencies for the target
-ExternalGame_LIB_DEPENDS:STATIC=general;Magea;
-
-//Value Computed by CMake
-ExternalGame_SOURCE_DIR:STATIC=C:/source/MageaWhole/Game
+//If set, static library targets generate LLVM bitcode files (.bc).
+// If disabled (default), UNIX ar archives (.a) are generated.
+EMSCRIPTEN_GENERATE_BITCODE_STATIC_LIBRARIES:BOOL=OFF
 
 //Extra compile options of FLAC
 FLAC_COMPILE_OPTIONS:STRING=
@@ -383,21 +331,6 @@ Game_LIB_DEPENDS:STATIC=general;core;general;MGUI;general;Magea;
 //Value Computed by CMake
 Game_SOURCE_DIR:STATIC=C:/source/MageaWhole/Game
 
-//Extra compile options of LibUSB
-LibUSB_COMPILE_OPTIONS:STRING=
-
-//Path to a file.
-LibUSB_INCLUDE_PATH:PATH=LibUSB_INCLUDE_PATH-NOTFOUND
-
-//Path to a library.
-LibUSB_LIBRARY:FILEPATH=LibUSB_LIBRARY-NOTFOUND
-
-//Extra link flags of LibUSB
-LibUSB_LINK_FLAGS:STRING=
-
-//Extra link libraries of LibUSB
-LibUSB_LINK_LIBRARIES:STRING=
-
 //Value Computed by CMake
 MGUI_BINARY_DIR:STATIC=C:/source/MageaWhole/build/MGUI
 
@@ -409,6 +342,18 @@ MGUI_LIB_DEPENDS:STATIC=general;SDL3::SDL3;general;SDL3_mixer::SDL3_mixer;genera
 
 //Value Computed by CMake
 MGUI_SOURCE_DIR:STATIC=C:/source/MageaWhole/MGUI
+
+//Value Computed by CMake
+MageaDevTools_BINARY_DIR:STATIC=C:/source/MageaWhole/build/tools/engine
+
+//Value Computed by CMake
+MageaDevTools_IS_TOP_LEVEL:STATIC=OFF
+
+//Dependencies for the target
+MageaDevTools_LIB_DEPENDS:STATIC=general;core;general;MGUI;general;Magea;general;SDL3::SDL3;general;angelscript;
+
+//Value Computed by CMake
+MageaDevTools_SOURCE_DIR:STATIC=C:/source/MageaWhole/tools/engine
 
 //Value Computed by CMake
 MageaGame_BINARY_DIR:STATIC=C:/source/MageaWhole/build
@@ -426,7 +371,7 @@ Magea_BINARY_DIR:STATIC=C:/source/MageaWhole/build/Magea
 Magea_IS_TOP_LEVEL:STATIC=OFF
 
 //Dependencies for the target
-Magea_LIB_DEPENDS:STATIC=general;SDL3::SDL3;general;SDL3_mixer::SDL3_mixer;general;core;general;MGUI;
+Magea_LIB_DEPENDS:STATIC=general;SDL3::SDL3;general;SDL3_mixer::SDL3_mixer;general;core;general;MGUI;general;angelscript;
 
 //Value Computed by CMake
 Magea_SOURCE_DIR:STATIC=C:/source/MageaWhole/Magea
@@ -500,6 +445,15 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=C:/msys64/ucrt64/bin/pkg-config.exe
 
+//Value Computed by CMake
+PackedFileUtil_BINARY_DIR:STATIC=C:/source/MageaWhole/build/tools/utility/pac
+
+//Value Computed by CMake
+PackedFileUtil_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+PackedFileUtil_SOURCE_DIR:STATIC=C:/source/MageaWhole/tools/utility/pac
+
 //The directory containing a CMake configuration file for PkgConfig.
 PkgConfig_DIR:PATH=PkgConfig_DIR-NOTFOUND
 
@@ -527,9 +481,6 @@ SDLMIXER_AIFF:BOOL=ON
 //Enable AU audio
 SDLMIXER_AU:BOOL=ON
 
-//Load dependencies dynamically
-SDLMIXER_DEPS_SHARED:BOOL=ON
-
 //Build the examples directory
 SDLMIXER_EXAMPLES:BOOL=OFF
 
@@ -543,13 +494,13 @@ SDLMIXER_FLAC_DRFLAC:BOOL=ON
 SDLMIXER_FLAC_LIBFLAC:BOOL=ON
 
 //Dynamically load LIBFLAC
-SDLMIXER_FLAC_LIBFLAC_SHARED:BOOL=ON
+SDLMIXER_FLAC_LIBFLAC_SHARED:BOOL=OFF
 
 //Support loading GME audio via game-music-emu
 SDLMIXER_GME:BOOL=ON
 
 //Dynamically load libgme
-SDLMIXER_GME_SHARED:BOOL=ON
+SDLMIXER_GME_SHARED:BOOL=OFF
 
 //Enable SDL3mixer install target
 SDLMIXER_INSTALL:BOOL=OFF
@@ -561,7 +512,7 @@ SDLMIXER_MIDI:BOOL=ON
 SDLMIXER_MIDI_FLUIDSYNTH:BOOL=ON
 
 //Dynamically load libfluidsynth
-SDLMIXER_MIDI_FLUIDSYNTH_SHARED:BOOL=ON
+SDLMIXER_MIDI_FLUIDSYNTH_SHARED:BOOL=OFF
 
 //Support timidity MIDI output
 SDLMIXER_MIDI_TIMIDITY:BOOL=ON
@@ -576,7 +527,7 @@ SDLMIXER_MOD_XMP:BOOL=ON
 SDLMIXER_MOD_XMP_LITE:BOOL=OFF
 
 //Dynamically load libxmp(-lite)
-SDLMIXER_MOD_XMP_SHARED:BOOL=ON
+SDLMIXER_MOD_XMP_SHARED:BOOL=OFF
 
 //Enable MP3 audio
 SDLMIXER_MP3:BOOL=ON
@@ -588,13 +539,13 @@ SDLMIXER_MP3_DRMP3:BOOL=ON
 SDLMIXER_MP3_MPG123:BOOL=ON
 
 //Dynamically load mpg123
-SDLMIXER_MP3_MPG123_SHARED:BOOL=ON
+SDLMIXER_MP3_MPG123_SHARED:BOOL=OFF
 
 //Enable Opus audio via libopus
 SDLMIXER_OPUS:BOOL=ON
 
 //Dynamically load libopus
-SDLMIXER_OPUS_SHARED:BOOL=ON
+SDLMIXER_OPUS_SHARED:BOOL=OFF
 
 //Fail when a dependency could not be found
 SDLMIXER_STRICT:BOOL=OFF
@@ -618,7 +569,7 @@ SDLMIXER_VORBIS_TREMOR:BOOL=OFF
 SDLMIXER_VORBIS_VORBISFILE:BOOL=ON
 
 //Dynamically load vorbisfile library
-SDLMIXER_VORBIS_VORBISFILE_SHARED:BOOL=ON
+SDLMIXER_VORBIS_VORBISFILE_SHARED:BOOL=OFF
 
 //Enable WAVE audio
 SDLMIXER_WAVE:BOOL=ON
@@ -630,34 +581,25 @@ SDLMIXER_WAVPACK:BOOL=ON
 SDLMIXER_WAVPACK_DSD:BOOL=OFF
 
 //Dynamically load WavPack library
-SDLMIXER_WAVPACK_SHARED:BOOL=ON
+SDLMIXER_WAVPACK_SHARED:BOOL=OFF
 
 //Treat warnings as errors
 SDLMIXER_WERROR:BOOL=OFF
 
 //Support the ALSA audio API
-SDL_ALSA:BOOL=OFF
+SDL_ALSA:BOOL=ON
 
 //Use AddressSanitizer to detect memory errors
 SDL_ASAN:BOOL=OFF
 
 //Enable assembly routines
-SDL_ASSEMBLY:BOOL=ON
+SDL_ASSEMBLY:BOOL=OFF
 
 //Enable internal sanity checks (auto/disabled/release/enabled/paranoid)
 SDL_ASSERTIONS:STRING=auto
 
 //Enable the Audio subsystem
 SDL_AUDIO:BOOL=ON
-
-//Use AVX assembly routines
-SDL_AVX:BOOL=ON
-
-//Use AVX2 assembly routines
-SDL_AVX2:BOOL=ON
-
-//Use AVX512F assembly routines
-SDL_AVX512F:BOOL=ON
 
 //number to use for magic backgrounding signal or 'OFF'
 SDL_BACKGROUNDING_SIGNAL:STRING=OFF
@@ -678,7 +620,7 @@ SDL_CHECK_REQUIRED_LINK_OPTIONS:STRING=
 SDL_CLANG_TIDY:BOOL=OFF
 
 //Use clock_gettime() instead of gettimeofday()
-SDL_CLOCK_GETTIME:BOOL=OFF
+SDL_CLOCK_GETTIME:BOOL=ON
 
 //Detected architecture ARM32
 SDL_CPU_ARM32:BOOL=0
@@ -688,9 +630,6 @@ SDL_CPU_ARM64:BOOL=0
 
 //Detected architecture ARM64EC
 SDL_CPU_ARM64EC:BOOL=0
-
-//Detected architecture EMSCRIPTEN
-SDL_CPU_EMSCRIPTEN:BOOL=0
 
 //Detected architecture LOONGARCH64
 SDL_CPU_LOONGARCH64:BOOL=0
@@ -714,22 +653,22 @@ SDL_CPU_RISCV32:BOOL=0
 SDL_CPU_RISCV64:BOOL=0
 
 //Detected architecture X64
-SDL_CPU_X64:BOOL=1
+SDL_CPU_X64:BOOL=0
 
 //Detected architecture X86
 SDL_CPU_X86:BOOL=0
 
-//Load dependencies dynamically
-SDL_DEPS_SHARED:BOOL=ON
+//Enable D-Bus support
+SDL_DBUS:BOOL=ON
 
 //Enable the Dialog subsystem
 SDL_DIALOG:BOOL=ON
 
-//Use DirectX for Windows audio/video
-SDL_DIRECTX:BOOL=ON
-
 //Support the disk writer audio driver
 SDL_DISKAUDIO:BOOL=ON
+
+//Record dlopen dependencies in .note.dlopen section
+SDL_DLOPEN_NOTES:BOOL=ON
 
 //Support the dummy audio driver
 SDL_DUMMYAUDIO:BOOL=ON
@@ -740,11 +679,17 @@ SDL_DUMMYCAMERA:BOOL=ON
 //Use dummy video driver
 SDL_DUMMYVIDEO:BOOL=ON
 
+//Path to mount Emscripten IDBFS at startup or '' to disable
+SDL_EMSCRIPTEN_PERSISTENT_PATH:STRING=
+
 //Build the examples directory
 SDL_EXAMPLES:BOOL=OFF
 
 //number to use for magic foregrounding signal or 'OFF'
 SDL_FOREGROUNDING_SIGNAL:STRING=OFF
+
+//Enable Fribidi support
+SDL_FRIBIDI:BOOL=ON
 
 //Use gcc builtin atomics
 SDL_GCC_ATOMICS:BOOL=ON
@@ -764,8 +709,8 @@ SDL_HIDAPI_JOYSTICK:BOOL=ON
 //Use libusb for low level joystick drivers
 SDL_HIDAPI_LIBUSB:BOOL=ON
 
-//Dynamically load libusb support
-SDL_HIDAPI_LIBUSB_SHARED:BOOL=ON
+//Enable IBus support
+SDL_IBUS:BOOL=ON
 
 SDL_INSTALL:BOOL=OFF
 
@@ -774,13 +719,13 @@ SDL_INSTALL:BOOL=OFF
 SDL_INSTALL_CMAKEDIR_ROOT:STRING=lib/cmake/SDL3
 
 //Support the JACK audio API
-SDL_JACK:BOOL=OFF
+SDL_JACK:BOOL=ON
 
 //Enable the Joystick subsystem
 SDL_JOYSTICK:BOOL=ON
 
 //Use KMS DRM video driver
-SDL_KMSDRM:BOOL=OFF
+SDL_KMSDRM:BOOL=ON
 
 //Use the system C library
 SDL_LIBC:BOOL=ON
@@ -788,11 +733,14 @@ SDL_LIBC:BOOL=ON
 //Prefer iconv() from libiconv, if available, over libc version
 SDL_LIBICONV:BOOL=OFF
 
+//Enable Thai support
+SDL_LIBTHAI:BOOL=ON
+
 //Enable libudev support
 SDL_LIBUDEV:BOOL=ON
 
-//Use MMX assembly routines
-SDL_MMX:BOOL=ON
+//Enable liburing support
+SDL_LIBURING:BOOL=ON
 
 //Use offscreen video driver
 SDL_OFFSCREEN:BOOL=ON
@@ -806,68 +754,44 @@ SDL_OPENGLES:BOOL=ON
 //Use OpenVR video driver
 SDL_OPENVR:BOOL=OFF
 
+//Support the OSS audio API
+SDL_OSS:BOOL=ON
+
 //Use Pipewire audio
-SDL_PIPEWIRE:BOOL=OFF
+SDL_PIPEWIRE:BOOL=ON
 
 //Enable the Power subsystem
 SDL_POWER:BOOL=ON
+
+//Preseed CMake cache to speed up configuration
+SDL_PRESEED:BOOL=ON
 
 //Use POSIX threads for multi-threading
 SDL_PTHREADS:BOOL=OFF
 
 //Use PulseAudio
-SDL_PULSEAUDIO:BOOL=OFF
+SDL_PULSEAUDIO:BOOL=ON
 
 //Enable the Render subsystem
 SDL_RENDER:BOOL=ON
 
-//Enable the Direct3D 9 render driver
-SDL_RENDER_D3D:BOOL=ON
-
-//Enable the Direct3D 11 render driver
-SDL_RENDER_D3D11:BOOL=ON
-
-//Enable the Direct3D 12 render driver
-SDL_RENDER_D3D12:BOOL=ON
-
 //Enable the SDL_GPU render driver
 SDL_RENDER_GPU:BOOL=ON
 
-//Enable the Vulkan render driver
-SDL_RENDER_VULKAN:BOOL=ON
-
 //Use an rpath when linking SDL
-SDL_RPATH:BOOL=OFF
+SDL_RPATH:BOOL=ON
 
 //Enable the Sensor subsystem
 SDL_SENSOR:BOOL=ON
 
-//Build a shared version of the library
-SDL_SHARED:BOOL=ON
-
 //Support the sndio audio API
-SDL_SNDIO:BOOL=OFF
-
-//Use SSE assembly routines
-SDL_SSE:BOOL=ON
-
-//Use SSE2 assembly routines
-SDL_SSE2:BOOL=ON
-
-//Use SSE3 assembly routines
-SDL_SSE3:BOOL=ON
-
-//Use SSE4.1 assembly routines
-SDL_SSE4_1:BOOL=ON
-
-//Use SSE4.2 assembly routines
-SDL_SSE4_2:BOOL=ON
+SDL_SNDIO:BOOL=ON
 
 //Build a static version of the library
-SDL_STATIC:BOOL=OFF
+SDL_STATIC:BOOL=ON
 
 //Use iconv() from system-installed libraries
-SDL_SYSTEM_ICONV:BOOL=OFF
+SDL_SYSTEM_ICONV:BOOL=ON
 
 //Build the test directory
 SDL_TESTS:BOOL=OFF
@@ -893,23 +817,44 @@ SDL_VIDEO:BOOL=ON
 //Enable the virtual-joystick driver
 SDL_VIRTUAL_JOYSTICK:BOOL=ON
 
-//Enable Vulkan support
-SDL_VULKAN:BOOL=ON
-
-//Use the Windows WASAPI audio driver
-SDL_WASAPI:BOOL=ON
-
 //Use Wayland video driver
-SDL_WAYLAND:BOOL=OFF
+SDL_WAYLAND:BOOL=ON
+
+//Use client-side window decorations on Wayland
+SDL_WAYLAND_LIBDECOR:BOOL=ON
 
 //Enable -Werror
 SDL_WERROR:BOOL=OFF
 
 //Use X11 video driver
-SDL_X11:BOOL=OFF
+SDL_X11:BOOL=ON
 
-//Use Xinput for Windows
-SDL_XINPUT:BOOL=ON
+//Enable Xcursor support
+SDL_X11_XCURSOR:BOOL=ON
+
+//Enable Xdbe support
+SDL_X11_XDBE:BOOL=ON
+
+//Enable Xfixes support
+SDL_X11_XFIXES:BOOL=ON
+
+//Enable XInput support
+SDL_X11_XINPUT:BOOL=ON
+
+//Enable Xrandr support
+SDL_X11_XRANDR:BOOL=ON
+
+//Enable Xscrnsaver support
+SDL_X11_XSCRNSAVER:BOOL=ON
+
+//Enable XShape support
+SDL_X11_XSHAPE:BOOL=ON
+
+//Enable Xsync support
+SDL_X11_XSYNC:BOOL=ON
+
+//Enable XTest support
+SDL_X11_XTEST:BOOL=ON
 
 //The directory containing a CMake configuration file for Vorbis.
 Vorbis_DIR:PATH=Vorbis_DIR-NOTFOUND
@@ -931,6 +876,18 @@ Vorbis_vorbisfile_LINK_LIBRARIES:STRING=
 
 //Extra link flags of vorbisfile
 Vorbis_vorbisfile_LINK_OPTIONS:STRING=
+
+//Value Computed by CMake
+angelscript_BINARY_DIR:STATIC=C:/source/MageaWhole/build/vendored/angelscript/angelscript/projects/cmake
+
+//Value Computed by CMake
+angelscript_IS_TOP_LEVEL:STATIC=OFF
+
+//Dependencies for the target
+angelscript_LIB_DEPENDS:STATIC=general;Threads::Threads;
+
+//Value Computed by CMake
+angelscript_SOURCE_DIR:STATIC=C:/source/MageaWhole/vendored/angelscript/angelscript/projects/cmake
 
 //Value Computed by CMake
 core_BINARY_DIR:STATIC=C:/source/MageaWhole/build/core
@@ -986,6 +943,15 @@ libxmp_LINK_LIBRARIES:STRING=
 //Extra link flags of libxmp
 libxmp_LINK_OPTIONS:STRING=
 
+//Value Computed by CMake
+miniz_BINARY_DIR:STATIC=C:/source/MageaWhole/build/vendored/miniz
+
+//Value Computed by CMake
+miniz_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+miniz_SOURCE_DIR:STATIC=C:/source/MageaWhole/vendored/miniz
+
 //Extra compile options of mpg123
 mpg123_COMPILE_OPTIONS:STRING=
 
@@ -1030,10 +996,10 @@ wavpack_LINK_OPTIONS:STRING=
 # INTERNAL cache entries
 ########################
 
+//Build the library as a shared library
+BUILD_SHARED_LIBS:INTERNAL=OFF
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_AR
-CMAKE_AR-ADVANCED:INTERNAL=1
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=c:/source/MageaWhole/build
 //Major version of cmake used to create the current loaded cache
@@ -1042,18 +1008,14 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=4
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=3
 //Patch version of cmake used to create the current loaded cache
 CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
+//ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
+CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
 CMAKE_COMMAND:INTERNAL=C:/cmake/bin/cmake.exe
 //Path to cpack program executable.
 CMAKE_CPACK_COMMAND:INTERNAL=C:/cmake/bin/cpack.exe
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=C:/cmake/bin/ctest.exe
-//ADVANCED property for variable: CMAKE_CXX_COMPILER
-CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_COMPILER_AR
-CMAKE_CXX_COMPILER_AR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_COMPILER_RANLIB
-CMAKE_CXX_COMPILER_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS
 CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_DEBUG
@@ -1064,14 +1026,8 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_STANDARD_LIBRARIES
-CMAKE_CXX_STANDARD_LIBRARIES-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER
-CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER_AR
-CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
-CMAKE_C_COMPILER_RANLIB-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER_CLANG_SCAN_DEPS
+CMAKE_C_COMPILER_CLANG_SCAN_DEPS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS
 CMAKE_C_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_DEBUG
@@ -1082,14 +1038,11 @@ CMAKE_C_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFO
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_STANDARD_LIBRARIES
-CMAKE_C_STANDARD_LIBRARIES-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.
 CMAKE_EDIT_COMMAND:INTERNAL=C:/cmake/bin/cmake-gui.exe
-//Executable file format
-CMAKE_EXECUTABLE_FORMAT:INTERNAL=Unknown
+CMAKE_EXECUTABLE_SUFFIX:INTERNAL=.html
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
 CMAKE_EXE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_DEBUG
@@ -1100,20 +1053,22 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXPORT_BUILD_DATABASE
-CMAKE_EXPORT_BUILD_DATABASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
-CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
-CMAKE_GENERATOR:INTERNAL=Ninja
+CMAKE_GENERATOR:INTERNAL=MinGW Makefiles
 //Generator instance identifier.
 CMAKE_GENERATOR_INSTANCE:INTERNAL=
 //Name of generator platform.
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
+//Test CMAKE_HAVE_LIBC_PTHREAD
+CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=
+//Have library pthreads
+CMAKE_HAVE_PTHREADS_CREATE:INTERNAL=
+//Have library pthread
+CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=C:/source/MageaWhole
@@ -1165,31 +1120,14 @@ CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_MODULE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_NM
-CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=11
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
 CMAKE_OBJDUMP-ADVANCED:INTERNAL=1
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_RANLIB
-CMAKE_RANLIB-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_RC_COMPILER
-CMAKE_RC_COMPILER-ADVANCED:INTERNAL=1
-CMAKE_RC_COMPILER_WORKS:INTERNAL=1
-//ADVANCED property for variable: CMAKE_RC_FLAGS
-CMAKE_RC_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_RC_FLAGS_DEBUG
-CMAKE_RC_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_RC_FLAGS_MINSIZEREL
-CMAKE_RC_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_RC_FLAGS_RELEASE
-CMAKE_RC_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_RC_FLAGS_RELWITHDEBINFO
-CMAKE_RC_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
@@ -1224,66 +1162,38 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_TAPI-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Test COMPILER_SUPPORTS_AVX
-COMPILER_SUPPORTS_AVX:INTERNAL=1
-//Test COMPILER_SUPPORTS_AVX2
-COMPILER_SUPPORTS_AVX2:INTERNAL=1
-//Test COMPILER_SUPPORTS_AVX512F
-COMPILER_SUPPORTS_AVX512F:INTERNAL=1
+//Test COMPILER_SUPPORTS_FCOLOR_DIAGNOSTICS
+COMPILER_SUPPORTS_FCOLOR_DIAGNOSTICS:INTERNAL=
+//Test COMPILER_SUPPORTS_FDIAGNOSTICS_COLOR
+COMPILER_SUPPORTS_FDIAGNOSTICS_COLOR:INTERNAL=1
 //Test COMPILER_SUPPORTS_FDIAGNOSTICS_COLOR_ALWAYS
 COMPILER_SUPPORTS_FDIAGNOSTICS_COLOR_ALWAYS:INTERNAL=1
 //Test COMPILER_SUPPORTS_GCC_ATOMICS
 COMPILER_SUPPORTS_GCC_ATOMICS:INTERNAL=1
-//Test COMPILER_SUPPORTS_MMX
-COMPILER_SUPPORTS_MMX:INTERNAL=1
-//Test COMPILER_SUPPORTS_SSE
-COMPILER_SUPPORTS_SSE:INTERNAL=1
-//Test COMPILER_SUPPORTS_SSE2
-COMPILER_SUPPORTS_SSE2:INTERNAL=1
-//Test COMPILER_SUPPORTS_SSE3
-COMPILER_SUPPORTS_SSE3:INTERNAL=1
-//Test COMPILER_SUPPORTS_SSE4_1
-COMPILER_SUPPORTS_SSE4_1:INTERNAL=1
-//Test COMPILER_SUPPORTS_SSE4_2
-COMPILER_SUPPORTS_SSE4_2:INTERNAL=1
+//If true, we are targeting Emscripten output.
+EMSCRIPTEN:INTERNAL=1
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[C:/msys64/ucrt64/bin/pkg-config.exe][v2.5.1()]
 //Have include alloca.h
-HAVE_ALLOCA_H:INTERNAL=
-//Have include audioclient.h
-HAVE_AUDIOCLIENT_H:INTERNAL=1
-//Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS
-HAVE_CLANG_COMMENT_BLOCK_COMMANDS:INTERNAL=
-//Have include d3d11_1.h
-HAVE_D3D11_H:INTERNAL=1
-//Have include d3d9.h
-HAVE_D3D9_H:INTERNAL=1
-//Have include ddraw.h
-HAVE_DDRAW_H:INTERNAL=1
-//Have include dinput.h
-HAVE_DINPUT_H:INTERNAL=1
-//Have include dsound.h
-HAVE_DSOUND_H:INTERNAL=1
-//Have include dxgi1_5.h
-HAVE_DXGI1_5_H:INTERNAL=1
-//Have include dxgi1_6.h
-HAVE_DXGI1_6_H:INTERNAL=1
-//Have include dxgi.h
-HAVE_DXGI_H:INTERNAL=1
-//Test HAVE_GAMEINPUT_H
-HAVE_GAMEINPUT_H:INTERNAL=
+HAVE_ALLOCA_H:INTERNAL=1
+//Have symbol dlopen
+HAVE_DLOPEN_IN_LIBC:INTERNAL=1
+//Have symbol elf_aux_info
+HAVE_ELF_AUX_INFO:INTERNAL=
+//Have symbol fdatasync
+HAVE_FDATASYNC:INTERNAL=1
 //Test HAVE_GCC_COMMENT_BLOCK_COMMANDS
-HAVE_GCC_COMMENT_BLOCK_COMMANDS:INTERNAL=
+HAVE_GCC_COMMENT_BLOCK_COMMANDS:INTERNAL=1
 //Test HAVE_GCC_FVISIBILITY
-HAVE_GCC_FVISIBILITY:INTERNAL=
+HAVE_GCC_FVISIBILITY:INTERNAL=1
 //Test HAVE_GCC_NO_STRICT_ALIASING
 HAVE_GCC_NO_STRICT_ALIASING:INTERNAL=1
 //Test HAVE_GCC_WALL
 HAVE_GCC_WALL:INTERNAL=1
 //Test HAVE_GCC_WDOCUMENTATION
-HAVE_GCC_WDOCUMENTATION:INTERNAL=
+HAVE_GCC_WDOCUMENTATION:INTERNAL=1
 //Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND
-HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND:INTERNAL=
+HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND:INTERNAL=1
 //Test HAVE_GCC_WFLOAT_CONVERSION
 HAVE_GCC_WFLOAT_CONVERSION:INTERNAL=1
 //Test HAVE_GCC_WIMPLICIT_FALLTHROUGH
@@ -1294,32 +1204,66 @@ HAVE_GCC_WSHADOW:INTERNAL=1
 HAVE_GCC_WUNDEF:INTERNAL=1
 //Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS
 HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS:INTERNAL=1
-//Test HAVE_GDWARF_4
-HAVE_GDWARF_4:INTERNAL=1
+//Have symbol getauxval
+HAVE_GETAUXVAL:INTERNAL=
+//Have symbol gethostname
+HAVE_GETHOSTNAME:INTERNAL=1
+//Have symbol getpagesize
+HAVE_GETPAGESIZE:INTERNAL=1
+//Have symbol getresgid
+HAVE_GETRESGID:INTERNAL=
+//Have symbol getresuid
+HAVE_GETRESUID:INTERNAL=
+//Have symbol gmtime_r
+HAVE_GMTIME_R:INTERNAL=1
 //Have library m
 HAVE_LIBM:INTERNAL=1
-//Test HAVE_MFAPI_H
-HAVE_MFAPI_H:INTERNAL=1
-//Have include mmdeviceapi.h
-HAVE_MMDEVICEAPI_H:INTERNAL=1
-//Have include roapi.h
-HAVE_ROAPI_H:INTERNAL=1
-//Have include sensorsapi.h
-HAVE_SENSORSAPI_H:INTERNAL=1
-//Have include shellscalingapi.h
-HAVE_SHELLSCALINGAPI_H:INTERNAL=1
-//Have include tpcshrd.h
-HAVE_TPCSHRD_H:INTERNAL=1
-//Test HAVE_WIN32_CC
-HAVE_WIN32_CC:INTERNAL=1
-//Test HAVE_WINDOWS_GAMING_INPUT_H
-HAVE_WINDOWS_GAMING_INPUT_H:INTERNAL=1
-//Test HAVE_WL_NO_UNDEFINED
-HAVE_WL_NO_UNDEFINED:INTERNAL=1
+//Have symbol localtime_r
+HAVE_LOCALTIME_R:INTERNAL=1
+//Have include malloc.h
+HAVE_MALLOC:INTERNAL=1
+//Have include malloc.h
+HAVE_MALLOC_H:INTERNAL=1
+//Have symbol memfd_create
+HAVE_MEMFD_CREATE:INTERNAL=
+//Have symbol nanosleep
+HAVE_NANOSLEEP:INTERNAL=1
+//Have symbol nl_langinfo
+HAVE_NL_LANGINFO:INTERNAL=1
+//Test HAVE_O_CLOEXEC
+HAVE_O_CLOEXEC:INTERNAL=1
+//Have symbol poll
+HAVE_POLL:INTERNAL=1
+//Have symbol posix_fallocate
+HAVE_POSIX_FALLOCATE:INTERNAL=1
+//Test HAVE_POSIX_SPAWN
+HAVE_POSIX_SPAWN:INTERNAL=
+//Have symbol posix_spawn_file_actions_addchdir
+HAVE_POSIX_SPAWN_FILE_ACTIONS_ADDCHDIR:INTERNAL=
+//Have symbol posix_spawn_file_actions_addchdir_np
+HAVE_POSIX_SPAWN_FILE_ACTIONS_ADDCHDIR_NP:INTERNAL=1
+//Have symbol ppoll
+HAVE_PPOLL:INTERNAL=
+//Have symbol sa_sigaction
+HAVE_SA_SIGACTION:INTERNAL=1
+//Have symbol setjmp
+HAVE_SETJMP:INTERNAL=1
+//Have symbol sigaction
+HAVE_SIGACTION:INTERNAL=1
+//Have symbol sigtimedwait
+HAVE_SIGTIMEDWAIT:INTERNAL=1
+//Test HAVE_ST_MTIM
+HAVE_ST_MTIM:INTERNAL=1
+//Have symbol sysconf
+HAVE_SYSCONF:INTERNAL=1
+//Have symbol sysctlbyname
+HAVE_SYSCTLBYNAME:INTERNAL=
 //Test HAVE_WL_VERSION_SCRIPT
-HAVE_WL_VERSION_SCRIPT:INTERNAL=1
-//Test HAVE_XINPUT_H
-HAVE_XINPUT_H:INTERNAL=1
+HAVE_WL_VERSION_SCRIPT:INTERNAL=
+//Test ICONV_IN_LIBC
+ICONV_IN_LIBC:INTERNAL=1
+//Test ICONV_IN_LIBICONV
+ICONV_IN_LIBICONV:INTERNAL=
 //Have symbol abs
 LIBC_HAS_ABS:INTERNAL=1
 //Have symbol acos
@@ -1343,7 +1287,9 @@ LIBC_HAS_ATOF:INTERNAL=1
 //Have symbol atoi
 LIBC_HAS_ATOI:INTERNAL=1
 //Have symbol bcopy
-LIBC_HAS_BCOPY:INTERNAL=
+LIBC_HAS_BCOPY:INTERNAL=1
+//Have symbol calloc
+LIBC_HAS_CALLOC:INTERNAL=1
 //Have symbol ceil
 LIBC_HAS_CEIL:INTERNAL=1
 //Have symbol ceilf
@@ -1376,6 +1322,8 @@ LIBC_HAS_FMOD:INTERNAL=1
 LIBC_HAS_FMODF:INTERNAL=1
 //Have symbol fopen64
 LIBC_HAS_FOPEN64:INTERNAL=1
+//Have symbol free
+LIBC_HAS_FREE:INTERNAL=1
 //Have symbol fseeko
 LIBC_HAS_FSEEKO:INTERNAL=1
 //Have symbol fseeko64
@@ -1385,19 +1333,19 @@ LIBC_HAS_GETENV:INTERNAL=1
 //Have include iconv.h
 LIBC_HAS_ICONV_H:INTERNAL=1
 //Have symbol index
-LIBC_HAS_INDEX:INTERNAL=
+LIBC_HAS_INDEX:INTERNAL=1
 //Have include inttypes.h
 LIBC_HAS_INTTYPES_H:INTERNAL=1
-//Test LIBC_HAS_ISINF
+//Have include isinf(double)
 LIBC_HAS_ISINF:INTERNAL=1
-//Test LIBC_HAS_ISINFF
-LIBC_HAS_ISINFF:INTERNAL=
-//Test LIBC_HAS_ISNAN
+//Have include isinff(float)
+LIBC_HAS_ISINFF:INTERNAL=1
+//Have include isnan(double)
 LIBC_HAS_ISNAN:INTERNAL=1
-//Test LIBC_HAS_ISNANF
-LIBC_HAS_ISNANF:INTERNAL=
+//Have include isnanf(float)
+LIBC_HAS_ISNANF:INTERNAL=1
 //Have symbol itoa
-LIBC_HAS_ITOA:INTERNAL=1
+LIBC_HAS_ITOA:INTERNAL=
 //Have include limits.h
 LIBC_HAS_LIMITS_H:INTERNAL=1
 //Have symbol log
@@ -1438,8 +1386,10 @@ LIBC_HAS_POW:INTERNAL=1
 LIBC_HAS_POWF:INTERNAL=1
 //Have symbol putenv
 LIBC_HAS_PUTENV:INTERNAL=1
+//Have symbol realloc
+LIBC_HAS_REALLOC:INTERNAL=1
 //Have symbol rindex
-LIBC_HAS_RINDEX:INTERNAL=
+LIBC_HAS_RINDEX:INTERNAL=1
 //Have symbol round
 LIBC_HAS_ROUND:INTERNAL=1
 //Have symbol roundf
@@ -1449,7 +1399,7 @@ LIBC_HAS_SCALBN:INTERNAL=1
 //Have symbol scalbnf
 LIBC_HAS_SCALBNF:INTERNAL=1
 //Have symbol setenv
-LIBC_HAS_SETENV:INTERNAL=
+LIBC_HAS_SETENV:INTERNAL=1
 //Have include signal.h
 LIBC_HAS_SIGNAL_H:INTERNAL=1
 //Have symbol sin
@@ -1476,6 +1426,8 @@ LIBC_HAS_STDINT_H:INTERNAL=1
 LIBC_HAS_STDIO_H:INTERNAL=1
 //Have include stdlib.h
 LIBC_HAS_STDLIB_H:INTERNAL=1
+//Have symbol strcasestr
+LIBC_HAS_STRCASESTR:INTERNAL=1
 //Have symbol strchr
 LIBC_HAS_STRCHR:INTERNAL=1
 //Have symbol strcmp
@@ -1485,9 +1437,9 @@ LIBC_HAS_STRINGS_H:INTERNAL=1
 //Have include string.h
 LIBC_HAS_STRING_H:INTERNAL=1
 //Have symbol strlcat
-LIBC_HAS_STRLCAT:INTERNAL=
+LIBC_HAS_STRLCAT:INTERNAL=1
 //Have symbol strlcpy
-LIBC_HAS_STRLCPY:INTERNAL=
+LIBC_HAS_STRLCPY:INTERNAL=1
 //Have symbol strlen
 LIBC_HAS_STRLEN:INTERNAL=1
 //Have symbol strncmp
@@ -1527,7 +1479,9 @@ LIBC_HAS_TRUNC:INTERNAL=1
 //Have symbol truncf
 LIBC_HAS_TRUNCF:INTERNAL=1
 //Have symbol unsetenv
-LIBC_HAS_UNSETENV:INTERNAL=
+LIBC_HAS_UNSETENV:INTERNAL=1
+//Have symbol vfork
+LIBC_HAS_VFORK:INTERNAL=
 //Have symbol vsnprintf
 LIBC_HAS_VSNPRINTF:INTERNAL=1
 //Have symbol vsscanf
@@ -1552,34 +1506,34 @@ LIBC_HAS_WCSNLEN:INTERNAL=1
 LIBC_HAS_WCSSTR:INTERNAL=1
 //Have symbol wcstol
 LIBC_HAS_WCSTOL:INTERNAL=1
-//Have symbol _copysign
-LIBC_HAS__COPYSIGN:INTERNAL=1
+//Test LIBC_HAS_WORKING_LIBUNWIND
+LIBC_HAS_WORKING_LIBUNWIND:INTERNAL=
 //Have symbol _Exit
 LIBC_HAS__EXIT:INTERNAL=1
-//Have symbol _fseeki64
-LIBC_HAS__FSEEKI64:INTERNAL=1
 //Have symbol _i64toa
-LIBC_HAS__I64TOA:INTERNAL=1
+LIBC_HAS__I64TOA:INTERNAL=
 //Have symbol _ltoa
-LIBC_HAS__LTOA:INTERNAL=1
+LIBC_HAS__LTOA:INTERNAL=
 //Have symbol _strrev
-LIBC_HAS__STRREV:INTERNAL=1
+LIBC_HAS__STRREV:INTERNAL=
 //Have symbol _ui64toa
-LIBC_HAS__UI64TOA:INTERNAL=1
+LIBC_HAS__UI64TOA:INTERNAL=
 //Have symbol _ultoa
-LIBC_HAS__ULTOA:INTERNAL=1
+LIBC_HAS__ULTOA:INTERNAL=
 //Have symbol _wcsdup
-LIBC_HAS__WCSDUP:INTERNAL=1
-//Test LIBC_ISINF_HANDLES_FLOAT
+LIBC_HAS__WCSDUP:INTERNAL=
+//Have include isinf(float)
 LIBC_ISINF_HANDLES_FLOAT:INTERNAL=1
-//Test LIBC_ISNAN_HANDLES_FLOAT
+//Have include isnan(float)
 LIBC_ISNAN_HANDLES_FLOAT:INTERNAL=1
 //Have symbol __GLIBC__
 LIBC_IS_GLIBC:INTERNAL=
+//Test LIBUNWIND_HAS_WORKINGLIBUNWIND
+LIBUNWIND_HAS_WORKINGLIBUNWIND:INTERNAL=
 //Test LINKER_SUPPORTS_VERSION_SCRIPT
-LINKER_SUPPORTS_VERSION_SCRIPT:INTERNAL=1
+LINKER_SUPPORTS_VERSION_SCRIPT:INTERNAL=
 //Test LINKER_SUPPORTS_WL_NO_UNDEFINED
-LINKER_SUPPORTS_WL_NO_UNDEFINED:INTERNAL=1
+LINKER_SUPPORTS_WL_NO_UNDEFINED:INTERNAL=
 PC_FLAC_CFLAGS:INTERNAL=
 PC_FLAC_CFLAGS_I:INTERNAL=
 PC_FLAC_CFLAGS_OTHER:INTERNAL=
@@ -1655,31 +1609,35 @@ PC_GME_libgme_INCLUDEDIR:INTERNAL=
 PC_GME_libgme_LIBDIR:INTERNAL=
 PC_GME_libgme_PREFIX:INTERNAL=
 PC_GME_libgme_VERSION:INTERNAL=
-PC_LibUSB_CFLAGS:INTERNAL=
-PC_LibUSB_CFLAGS_I:INTERNAL=
-PC_LibUSB_CFLAGS_OTHER:INTERNAL=
-PC_LibUSB_FOUND:INTERNAL=
-PC_LibUSB_INCLUDEDIR:INTERNAL=
-PC_LibUSB_LIBDIR:INTERNAL=
-PC_LibUSB_LIBS:INTERNAL=
-PC_LibUSB_LIBS_L:INTERNAL=
-PC_LibUSB_LIBS_OTHER:INTERNAL=
-PC_LibUSB_LIBS_PATHS:INTERNAL=
-PC_LibUSB_MODULE_NAME:INTERNAL=
-PC_LibUSB_PREFIX:INTERNAL=
-PC_LibUSB_STATIC_CFLAGS:INTERNAL=
-PC_LibUSB_STATIC_CFLAGS_I:INTERNAL=
-PC_LibUSB_STATIC_CFLAGS_OTHER:INTERNAL=
-PC_LibUSB_STATIC_LIBDIR:INTERNAL=
-PC_LibUSB_STATIC_LIBS:INTERNAL=
-PC_LibUSB_STATIC_LIBS_L:INTERNAL=
-PC_LibUSB_STATIC_LIBS_OTHER:INTERNAL=
-PC_LibUSB_STATIC_LIBS_PATHS:INTERNAL=
-PC_LibUSB_VERSION:INTERNAL=
-PC_LibUSB_libusb-1.0_INCLUDEDIR:INTERNAL=
-PC_LibUSB_libusb-1.0_LIBDIR:INTERNAL=
-PC_LibUSB_libusb-1.0_PREFIX:INTERNAL=
-PC_LibUSB_libusb-1.0_VERSION:INTERNAL=
+PC_LIBUNWIND_CFLAGS:INTERNAL=
+PC_LIBUNWIND_CFLAGS_I:INTERNAL=
+PC_LIBUNWIND_CFLAGS_OTHER:INTERNAL=
+PC_LIBUNWIND_FOUND:INTERNAL=
+PC_LIBUNWIND_INCLUDEDIR:INTERNAL=
+PC_LIBUNWIND_LIBDIR:INTERNAL=
+PC_LIBUNWIND_LIBS:INTERNAL=
+PC_LIBUNWIND_LIBS_L:INTERNAL=
+PC_LIBUNWIND_LIBS_OTHER:INTERNAL=
+PC_LIBUNWIND_LIBS_PATHS:INTERNAL=
+PC_LIBUNWIND_MODULE_NAME:INTERNAL=
+PC_LIBUNWIND_PREFIX:INTERNAL=
+PC_LIBUNWIND_STATIC_CFLAGS:INTERNAL=
+PC_LIBUNWIND_STATIC_CFLAGS_I:INTERNAL=
+PC_LIBUNWIND_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_LIBUNWIND_STATIC_LIBDIR:INTERNAL=
+PC_LIBUNWIND_STATIC_LIBS:INTERNAL=
+PC_LIBUNWIND_STATIC_LIBS_L:INTERNAL=
+PC_LIBUNWIND_STATIC_LIBS_OTHER:INTERNAL=
+PC_LIBUNWIND_STATIC_LIBS_PATHS:INTERNAL=
+PC_LIBUNWIND_VERSION:INTERNAL=
+PC_LIBUNWIND_libunwind-generic_INCLUDEDIR:INTERNAL=
+PC_LIBUNWIND_libunwind-generic_LIBDIR:INTERNAL=
+PC_LIBUNWIND_libunwind-generic_PREFIX:INTERNAL=
+PC_LIBUNWIND_libunwind-generic_VERSION:INTERNAL=
+PC_LIBUNWIND_libunwind_INCLUDEDIR:INTERNAL=
+PC_LIBUNWIND_libunwind_LIBDIR:INTERNAL=
+PC_LIBUNWIND_libunwind_PREFIX:INTERNAL=
+PC_LIBUNWIND_libunwind_VERSION:INTERNAL=
 PC_MPG123_CFLAGS:INTERNAL=
 PC_MPG123_CFLAGS_I:INTERNAL=
 PC_MPG123_CFLAGS_OTHER:INTERNAL=
@@ -1840,12 +1798,18 @@ SDL_CHECK_REQUIRED_INCLUDES-ADVANCED:INTERNAL=1
 SDL_CHECK_REQUIRED_LINK_OPTIONS-ADVANCED:INTERNAL=1
 //Result of TRY_COMPILE
 SDL_CPU_CHECK_ALL:INTERNAL=TRUE
+//Test SDL_CPU_EMSCRIPTEN
+SDL_CPU_EMSCRIPTEN:INTERNAL=1
+//Result of TRY_COMPILE
+THREADS_HAVE_PTHREAD_ARG:INTERNAL=FALSE
+//Have symbol _alloca
+_ALLOCA_IN_MALLOC_H:INTERNAL=
 //CMAKE_INSTALL_PREFIX during last run
-_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/Magea
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/source/emsdk/upstream/emscripten/cache/sysroot
 __pkg_config_checked_PC_FLAC:INTERNAL=1
 __pkg_config_checked_PC_FLUIDSYNTH:INTERNAL=1
 __pkg_config_checked_PC_GME:INTERNAL=1
-__pkg_config_checked_PC_LibUSB:INTERNAL=1
+__pkg_config_checked_PC_LIBUNWIND:INTERNAL=1
 __pkg_config_checked_PC_MPG123:INTERNAL=1
 __pkg_config_checked_PC_OGG:INTERNAL=1
 __pkg_config_checked_PC_OPUS:INTERNAL=1

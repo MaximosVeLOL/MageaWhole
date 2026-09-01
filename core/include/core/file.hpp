@@ -26,8 +26,7 @@ namespace FileSystem {
 			NODE_FILE = 1,
 		};
 
-		struct Node;
-
+		struct CORE_API Node;
 
 		constexpr u8 NODE_NAME_MAX = 32;
 

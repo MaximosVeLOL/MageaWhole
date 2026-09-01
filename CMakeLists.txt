@@ -18,7 +18,7 @@ add_subdirectory(vendored/SDL EXCLUDE_FROM_ALL)
 add_subdirectory(vendored/SDL_mixer EXCLUDE_FROM_ALL)
 set(SDL_INSTALL OFF CACHE BOOL "" FORCE) 
 
-add_subdirectory(vendored/angelscript/angelscript/projects/cmake)
+#add_subdirectory(vendored/angelscript/angelscript/projects/cmake)
 add_subdirectory(vendored/miniz)
 
 #My projects go here

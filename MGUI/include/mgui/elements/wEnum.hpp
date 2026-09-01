@@ -4,6 +4,8 @@
 #include <mgui/widget.hpp>
 #include <core/math.hpp>
 
+#include <functional>
+
 namespace MGUI {
 
 	//A Combo-Box, where you can select multiple options
@@ -18,7 +20,8 @@ namespace MGUI {
 		bool dActivated = false;
 
 
-		void(*OnSelect)(u8 pPrev, u8 pNext) = nullptr;
+		//void(*OnSelect)(u8 pPrev, u8 pNext) = nullptr;
+		std::function<void(u8, u8)> eOnSelect;
 
 		void OnMouseClickEnd() override {
 			if (dActivated) {
@@ -28,8 +31,9 @@ namespace MGUI {
 				if (gridPos < 255) {
 					u8 prev = dIndex;
 					dIndex = gridPos;
-					if (OnSelect)
-						OnSelect(prev, gridPos);
+					eOnSelect(prev, gridPos);
+					//if (OnSelect)
+					//	OnSelect(prev, gridPos);
 				}
 			}
 			else mRect.height = ((dValueAmount + 1) * dValueHeight);
@@ -70,8 +74,13 @@ namespace MGUI {
 				SDL_strlcpy(dValues[i], pValues[i], strlen + 1);
 			}
 		}
+		/*
 		wEnum(RRect pPosition, const char** pValues, u8 pValueAmount, u8 pValueHeight, void(*pOnSelect)(u8 pPrev, u8 pNext)) : wEnum(pPosition, pValues, pValueAmount, pValueHeight) {
 			OnSelect = pOnSelect;
+		}
+		*/
+		wEnum(RRect pPosition, const char** pValues, u8 pValueAmount, u8 pValueHeight, std::function<void(u8 pPrev, u8 pNext)> pEOnSelect) : wEnum(pPosition, pValues, pValueAmount, pValueHeight) {
+			eOnSelect = pEOnSelect;
 		}
 	};
 }
